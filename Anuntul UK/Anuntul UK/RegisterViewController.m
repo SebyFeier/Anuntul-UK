@@ -94,8 +94,13 @@
         if (self.userInfo) {
             self.profileUsernameLabel.text = self.userInfo[@"nume"];
             self.profileEmailLabel.text = self.userInfo[@"email"];
-            if ([self.userInfo[@"post_avatar"] length]) {
-            [self.profileImageView hnk_setImageFromURL:[NSURL URLWithString:self.userInfo[@"post_avatar"]]];
+//            if ([self.userInfo[@"post_avatar"] length]) {
+//            [self.profileImageView hnk_setImageFromURL:[NSURL URLWithString:self.userInfo[@"post_avatar"]]];
+//            } else {
+//                [self.profileImageView setImage:[UIImage imageNamed:@"no_avatar"]];
+//            }
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"facebookImage"]) {
+                [self.profileImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"facebookImage"]]]]];
             } else {
                 [self.profileImageView setImage:[UIImage imageNamed:@"no_avatar"]];
             }
@@ -262,7 +267,7 @@
             [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
             if (!error) {
                 if ([dictionary[@"success"] boolValue]) {
-                    [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Va rugam sa va verificati emailul (inclusiv in folderul Spam).V-a fost trimis un email ce contine linkul de resetare a parolei." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    [[[UIAlertView alloc] initWithTitle:@"" message:@"Va rugam sa va verificati emailul (inclusiv in folderul Spam).V-a fost trimis un email ce contine linkul de resetare a parolei." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                     [self.navigationController popViewControllerAnimated:YES];
                 } else if (dictionary[@"failed"]) {
                     [[[UIAlertView alloc] initWithTitle:@"Eroare" message:[dictionary objectForKey:@"failed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

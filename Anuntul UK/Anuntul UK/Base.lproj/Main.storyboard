@@ -775,8 +775,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_background" translatesAutoresizingMaskIntoConstraints="NO" id="2Ns-Na-F9F">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ns-Na-F9F">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2202,6 +2203,7 @@
                     <connections>
                         <outlet property="backgroundImage" destination="mqS-ea-Y3m" id="zRo-6x-chs"/>
                         <outlet property="segmentedControl" destination="FFa-Ud-ekL" id="ayM-Sm-42V"/>
+                        <outlet property="segmentedControlHeight" destination="NXe-Ep-6yH" id="MlJ-Pi-a3J"/>
                         <outlet property="tableView" destination="B7n-EZ-5UG" id="L9G-lr-OF8"/>
                         <outlet property="tableViewTopConstraint" destination="uy9-va-bPz" id="eAj-q9-RnV"/>
                     </connections>

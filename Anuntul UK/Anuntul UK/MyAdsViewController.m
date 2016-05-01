@@ -47,7 +47,7 @@
 - (void)promote:(id)sender {
     _paypalConfig = [[PayPalConfiguration alloc] init];
     _paypalConfig.acceptCreditCards = YES;
-    _paypalConfig.merchantName = @"Anuntul UK";
+    _paypalConfig.merchantName = @"Anuntul de UK";
     _paypalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
     _paypalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
     

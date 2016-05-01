@@ -9,6 +9,8 @@
 #import "WebServiceManager.h"
 #import <AFHTTPClient.h>
 #import "AFNetworking.h"
+#include <ifaddrs.h>
+#include <arpa/inet.h>
 
 #define kTWebServiceForEndpoint(endpoint) [WebServiceUrl stringByAppendingPathComponent:endpoint]
 
@@ -85,7 +87,7 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
     if ([locationId rangeOfString:@"null"].location != NSNotFound) {
         locationId = @"";
     }
-    NSString *urlString = [NSString stringWithFormat:@"search?name=%@&location=%@&category_id=%@&page=%@",keyWord, locationId, categoryId, pageNumber];
+    NSString *urlString = [NSString stringWithFormat:@"search?name=%@&location=%@&category_id=%@&page=%@",[keyWord stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], locationId, categoryId, pageNumber];
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setStringEncoding:NSUTF8StringEncoding];
@@ -264,7 +266,8 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
 - (void)createAnnouncementWithCategoryId:(NSString *)categoryId userId:(NSString *)userId locationId:(NSString *)locationId announcementType:(NSString *)announcementType title:(NSString *)title description:(NSString *)description phoneNumber:(NSString *)phoneNumber images:(NSArray *)images withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
     NSString *urlString = @"announcement/create";
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:categoryId,@"id_categ",userId,@"id_user",locationId,@"id_locatie",announcementType,@"setari_anunturi_id",title,@"titlu",description,@"descriere",phoneNumber,@"telefon1", images,@"images", nil];
+    NSString *ipAddress = [self getIPAddress];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:categoryId,@"id_categ",userId,@"id_user",locationId,@"id_locatie",announcementType,@"setari_anunturi_id",title,@"titlu",description,@"descriere",phoneNumber,@"telefon1", images,@"images",ipAddress,@"ip", nil];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setStringEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
@@ -537,7 +540,8 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
 - (void)reportAnnouncementWithId:(NSString *)announcementId withMessage:(NSString *)message withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
     NSString *urlString = @"user/report";
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:announcementId,@"announcement_id",message,@"mesaj", nil];
+    NSString *ipAddress = [self getIPAddress];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:announcementId,@"announcement_id",message,@"mesaj",ipAddress,@"ip", nil];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setStringEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
@@ -558,7 +562,9 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
 - (void)contactOwnerWithEmail:(NSString *)email phoneNumber:(NSString *)phoneNumber body:(NSString *)body withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
     NSString *urlString = @"user/contact_owner";
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email",phoneNumber,@"telefon",body,@"body", nil];
+    NSString *ipAddress = [self getIPAddress];
+
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email",phoneNumber,@"telefon",body,@"body",ipAddress,@"ip", nil];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setStringEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
@@ -617,6 +623,37 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
     }];
     [operation start];
 
+}
+
+- (NSString *)getIPAddress {
+    
+    NSString *address = @"error";
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    int success = 0;
+    // retrieve the current interfaces - returns 0 on success
+    success = getifaddrs(&interfaces);
+    if (success == 0) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while(temp_addr != NULL) {
+            if(temp_addr->ifa_addr->sa_family == AF_INET) {
+                // Check if interface is en0 which is the wifi connection on the iPhone
+                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                    // Get NSString from C String
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                    
+                }
+                
+            }
+            
+            temp_addr = temp_addr->ifa_next;
+        }
+    }
+    // Free memory
+    freeifaddrs(interfaces);
+    return address;
+    
 }
 
 @end

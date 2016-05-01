@@ -167,7 +167,7 @@
                         [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
                         if (!error) {
                             if ([dictionary[@"success"] boolValue]) {
-                                [[[UIAlertView alloc] initWithTitle:@"Info" message:@"E-mailul a fost trimis" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                [[[UIAlertView alloc] initWithTitle:@"" message:@"E-mailul a fost trimis" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
                         } else {
@@ -175,13 +175,13 @@
                         }
                     }];
                 } else {
-                    [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți mesajul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    [[[UIAlertView alloc] initWithTitle:@"" message:@"Introduceți mesajul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                 }
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți e-mailul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"" message:@"Introduceți e-mailul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             }
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți numele" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"" message:@"Introduceți numele" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     } else if (self.fieldType == REPORT) {
         if ([self.messageTextView.text length]) {
@@ -190,7 +190,7 @@
                 [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
                 if (!error) {
                     if ([dictionary[@"success"] boolValue]) {
-                        [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Anunțul a fost raportat" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                        [[[UIAlertView alloc] initWithTitle:@"" message:@"Anunțul a fost raportat" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                         [self.navigationController popViewControllerAnimated:YES];
                     }
                 } else {
@@ -198,18 +198,18 @@
                 }
             }];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți mesajul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"" message:@"Introduceți mesajul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     } else if (self.fieldType == CONTACT) {
         if ([self validateEmail:self.nameTextField.text]) {
 //            if ([self validateEmail:self.emailTextField.text]) {
                 if ([self.messageTextView.text length]) {
                     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-                    [[WebServiceManager sharedInstance] contactOwnerWithEmail:self.emailTextField.text phoneNumber:self.nameTextField.text body:self.messageTextView.text withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                    [[WebServiceManager sharedInstance] contactOwnerWithEmail:self.nameTextField.text phoneNumber:self.emailTextField.text body:self.messageTextView.text withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
                         [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
                         if (!error) {
                             if ([dictionary[@"success"] boolValue]) {
-                                [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Veți fi contactat in curand" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                [[[UIAlertView alloc] initWithTitle:@"" message:@"Veți fi contactat in curand" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
                         } else {
@@ -218,13 +218,10 @@
                         
                     }];
                 } else {
-                    [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți mesajul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    [[[UIAlertView alloc] initWithTitle:@"" message:@"Introduceți mesajul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                 }
-//            } else {
-//                [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți e-mailul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//            }
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Introduceți emailul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"" message:@"Introduceți emailul" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }
     

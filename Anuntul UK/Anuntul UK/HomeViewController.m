@@ -59,7 +59,7 @@
         _isPremium = NO;
         self.listOfAds = [[NSMutableArray alloc] initWithArray:[[[WebServiceManager sharedInstance] adsValues] objectForKey:[[WebServiceManager sharedInstance] categoryId]]];
     } else {
-        [[WebServiceManager sharedInstance] setCategoryName:@"Anunțul UK"];
+        [[WebServiceManager sharedInstance] setCategoryName:@"Anunțul de UK"];
         _isPremium = YES;
         [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
         [[WebServiceManager sharedInstance] getPremiumAnnouncementWithPageNumber:[NSNumber numberWithInteger:1] withCompletionBlock:^(NSArray *array, NSError *error) {
@@ -114,7 +114,7 @@
 - (void)getPremiumAnnouncements:(NSNotification *)notification {
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem.enabled = YES;
-    [[WebServiceManager sharedInstance] setCategoryName:@"Anunțul UK"];
+    [[WebServiceManager sharedInstance] setCategoryName:@"Anunțul de UK"];
     self.searchWidthConstraint.constant = CGRectGetWidth(self.view.frame);
     self.searchTrailingConstraint.constant = -CGRectGetWidth(self.view.frame);
     _isSearch = NO;

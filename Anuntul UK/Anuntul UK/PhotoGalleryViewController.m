@@ -74,6 +74,7 @@
     }
     NSDictionary *image = [self.imagesArray objectAtIndex:indexPath.row];
     [cell loadImageWithInfo:image isFullScreen:YES];
+    [cell layoutSubviews];
     
     return cell;
 }

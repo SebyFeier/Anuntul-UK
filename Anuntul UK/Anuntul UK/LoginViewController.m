@@ -427,11 +427,11 @@
                                      self.accountPasswordTextField.text = @"";
                                      self.accountConfirmPasswordTextField.text = @"";
                                      self.usernameLabel.text = dictionary[@"nume"];
-                                     if (dictionary[@"avatar"] && ![dictionary[@"avatar"] isEqual:[NSNull null]]) {
-                                         [self.userImageView hnk_setImageFromURL:[NSURL URLWithString:dictionary[@"avatar"]]];
-                                     } else {
-                                         [self.userImageView setImage:[UIImage imageNamed:@"no-image"]];
-                                     }
+//                                     if (dictionary[@"avatar"] && ![dictionary[@"avatar"] isEqual:[NSNull null]]) {
+//                                         [self.userImageView hnk_setImageFromURL:[NSURL URLWithString:dictionary[@"avatar"]]];
+//                                     } else {
+//                                         [self.userImageView setImage:[UIImage imageNamed:@"no-image"]];
+//                                     }
                                      NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
                                      NSString *registeredDateString = dictionary[@"data_inreg"];
                                      [dateFormatter2 setDateFormat:@"yyyy-MM-dd"];

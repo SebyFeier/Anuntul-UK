@@ -14,6 +14,8 @@
 #import "MBProgressHUD.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+//production AS1nkHxy01JbjgonQPcd62yTDmvwO6NltjD1dXHoTj4HNn9xj_-5R6mDiYh-o_hxC_K8mpue3OxSlfHZ
+//sandbox  AcI2pGST8o8b4e7nQH6bQw59bSTheq5nQqZS1MYl59FJLtdSrU497BkSp-Gsb68l_nSAepVBz_doG_p_
 
 @interface AppDelegate ()
 
@@ -28,8 +30,12 @@
     
     [Fabric with:@[[Crashlytics class]]];
     
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"AVIYNTMpy8GUd5WYziceXD5RmKwUCD7zRkbftNBBAc3xeOPYUGyJe3msUfIcVCBNJ1G0_MP6uqTKSOj-",
-                                                           PayPalEnvironmentSandbox : @"ATuC9q6N96XMU6ZLtWVJ2VaM1jsHXg4nGGrMcPS6gzGcztyICCA9cJjlc4GyFBK_7hKXmKPwZSn2bm-m"}];
+//    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"AVIYNTMpy8GUd5WYziceXD5RmKwUCD7zRkbftNBBAc3xeOPYUGyJe3msUfIcVCBNJ1G0_MP6uqTKSOj-",
+//                                                           PayPalEnvironmentSandbox : @"ATuC9q6N96XMU6ZLtWVJ2VaM1jsHXg4nGGrMcPS6gzGcztyICCA9cJjlc4GyFBK_7hKXmKPwZSn2bm-m"}];
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction:@"AS1nkHxy01JbjgonQPcd62yTDmvwO6NltjD1dXHoTj4HNn9xj_-5R6mDiYh-o_hxC_K8mpue3OxSlfHZ", PayPalEnvironmentSandbox:@"AcI2pGST8o8b4e7nQH6bQw59bSTheq5nQqZS1MYl59FJLtdSrU497BkSp-Gsb68l_nSAepVBz_doG_p_"}];
+    //for testing, both should be on production ^^
+    
+//    [PayPalMobile initializeWithClientIdsForEnvironments:<#(nonnull NSDictionary *)#>]
     // Override point for customization after application launch.
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
     [[WebServiceManager sharedInstance] getAllCategoriesWithCompletionBlock:^(NSArray *array, NSError *error) {

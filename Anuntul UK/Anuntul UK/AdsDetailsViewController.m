@@ -22,7 +22,7 @@
 #import "UIView+Borders.h"
 #import "SuccessViewController.h"
 
-#define kPayPalEnvironment PayPalEnvironmentSandbox
+#define kPayPalEnvironment PayPalEnvironmentProduction
 
 
 @interface AdsDetailsViewController ()<MFMailComposeViewControllerDelegate,PayPalFuturePaymentDelegate, PayPalPaymentDelegate, UICollectionViewDelegate, UICollectionViewDataSource> {
@@ -61,6 +61,18 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
+
+//    if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
+//        flowLayout.itemSize = CGSizeMake(170.f, 170.f);
+//    } else {
+//        flowLayout.itemSize = CGSizeMake(192.f, 192.f);
+//    }
+    flowLayout.itemSize = self.collectionView.frame.size;
+    [self.collectionView scrollsToTop];
+    
+    [flowLayout invalidateLayout];
+//    [self.collectionView reloadData];
     self.scrollView.frame = self.view.bounds;
     self.titleLabel.frame = CGRectMake(10, 64, CGRectGetWidth(self.scrollView.frame) - 20, 0);
     
@@ -102,7 +114,7 @@
         self.buttonsView.frame = CGRectMake(10, CGRectGetMaxY(self.separator2.frame), CGRectGetWidth(self.scrollView.frame) - 20, 54);
     }
 
-    UIColor *color = [UIColor hx_colorWithHexString:@"BFBFBF"];
+    UIColor *color = [UIColor hx_colorWithHexString:@"929292"];
     
         [self.buttonsView addTopBorderWithHeight:1 andColor:color];
 //    [self.buttonsView addLeftBorderWithWidth:1 andColor:color];
@@ -189,6 +201,27 @@
                                              descriptionFrame.size.width,
                                              descriptionHeight);
 }
+
+- (NSString *)findStringInDescription:(NSString *)searchedString {
+//    NSString *searchedString = @"domain-name.tld.tld2";
+    NSRange   searchedRange = NSMakeRange(0, [searchedString length]);
+    NSString *pattern = @"<a href=\"tel:.*\">";
+    NSError  *error = nil;
+    
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern: pattern options:0 error:&error];
+    NSArray* matches = [regex matchesInString:searchedString options:0 range: searchedRange];
+    for (NSTextCheckingResult* match in matches) {
+        NSString* matchText = [searchedString substringWithRange:[match range]];
+        NSLog(@"match: %@", matchText);
+        return matchText;
+//        NSRange group1 = [match rangeAtIndex:1];
+//        NSRange group2 = [match rangeAtIndex:2];
+//        NSLog(@"group1: %@", [searchedString substringWithRange:group1]);
+//        NSLog(@"group2: %@", [searchedString substringWithRange:group2]);
+    }
+    return nil;
+}
+
 - (void)popToRoot:(NSNotification *)notification {
     [self.navigationController popToRootViewControllerAnimated:YES];
     [self.navigationController popViewControllerAnimated:YES];
@@ -212,14 +245,14 @@
 //                    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
                     _paypalConfig = [[PayPalConfiguration alloc] init];
                     _paypalConfig.acceptCreditCards = YES;
-                    _paypalConfig.merchantName = @"Anunțul UK";
+                    _paypalConfig.merchantName = @"Anunțul de UK";
                     _paypalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
                     _paypalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
                     
                     _paypalConfig.languageOrLocale = [NSLocale preferredLanguages][0];
                     
                     _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionNone;
-                    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentNoNetwork];
+                    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
                     
                     PayPalItem *item1 = [PayPalItem itemWithName:[NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]] withQuantity:1 withPrice:[NSDecimalNumber decimalNumberWithString:self.announcementType[@"amount"]] withCurrency:@"GBP" withSku:self.announcementInfo[@"titlu"]];
                     NSArray *items = @[item1];
@@ -276,9 +309,6 @@
             if (!error) {
                 if ([dictionary[@"success"] boolValue]) {
                 }
-//                [self.navigationController popViewControllerAnimated:YES];
-//                [[[UIAlertView alloc] initWithTitle:@"Info" message:@"Anuntul a fost adaugat cu succes" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//                [self.navigationController popToRootViewControllerAnimated:YES];
                 SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
                 [self.navigationController pushViewController:successViewController animated:YES];
 
@@ -453,7 +483,7 @@
             self.viewsLabel.text = [NSString stringWithFormat:@"%@, %@ afisari", self.adDetails[@"timp"], self.adDetails[@"afisari"]];
         }
     }
-    self.viewsLabel.textColor = [HXColor hx_colorWithHexString:@"bfbfbf"];
+    self.viewsLabel.textColor = [HXColor hx_colorWithHexString:@"929292"];
 //
     if ([self.adDetails[@"images"] count]) {
         if (!self.collectionView) {
@@ -479,7 +509,7 @@
             self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
             self.pageControl.numberOfPages = [self.adDetails[@"images"] count];
             self.pageControl.currentPage = 0;
-            self.pageControl.backgroundColor = [UIColor hx_colorWithHexString:@"BFBFBF"];
+            self.pageControl.backgroundColor = [UIColor hx_colorWithHexString:@"929292"];
 //            self.pageControl.alpha = f;
             [self.scrollView addSubview:self.pageControl];
         }
@@ -487,15 +517,21 @@
 //
     if (!self.descriptionLabel) {
         self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.descriptionLabel.textAlignment = NSTextAlignmentJustified;
         [self.scrollView addSubview:self.descriptionLabel];
     }
 //    self.descriptionLabel.text = self.adDetails[@"descriere"];
     NSString *descriptionText = self.adDetails[@"descriere"];
+    descriptionText = [NSString removeCharacterFromString:descriptionText];
+    NSString *searchedString = [self findStringInDescription:descriptionText];
+    if (searchedString) {
+        descriptionText = [descriptionText stringByReplacingOccurrencesOfString:searchedString withString:@""];
+    }
     //    descriptionText = [descriptionText stringByReplacingOccurrencesOfString:@"U00c8" withString:@"asd"];
 //    descriptionText = [descriptionText stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
 //    NSString *str = [NSString stringWithCharacters:"\U00c8" length:1];
-    self.descriptionLabel.text = [NSString removeCharacterFromString:descriptionText];
+    self.descriptionLabel.text = descriptionText;
     self.descriptionLabel.numberOfLines = 0;
     
     [self updateDescription];
@@ -529,13 +565,13 @@
     
     if (!self.separator1) {
         self.separator1 = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.separator1.backgroundColor = [HXColor hx_colorWithHexString:@"bfbfbf"];
+        self.separator1.backgroundColor = [HXColor hx_colorWithHexString:@"929292"];
         [self.scrollView addSubview:self.separator1];
     }
     
     if (!self.adIdLabel) {
         self.adIdLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.adIdLabel.textColor = [HXColor hx_colorWithHexString:@"bfbfbf"];
+        self.adIdLabel.textColor = [HXColor hx_colorWithHexString:@"929292"];
         self.adIdLabel.textAlignment = NSTextAlignmentLeft;
         self.adIdLabel.font = [UIFont systemFontOfSize:15];
         [self.scrollView addSubview:self.adIdLabel];
@@ -554,7 +590,7 @@
     
     if (!self.separator2) {
         self.separator2 = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.separator2.backgroundColor = [HXColor hx_colorWithHexString:@"bfbfbf"];
+        self.separator2.backgroundColor = [HXColor hx_colorWithHexString:@"929292"];
         [self.scrollView addSubview:self.separator2];
     }
     
@@ -673,6 +709,7 @@
     }
     NSDictionary *image = [self.adDetails[@"images"] objectAtIndex:indexPath.row];
     [cell loadImageWithInfo:image isFullScreen:NO];
+    [cell layoutSubviews];
     self.pageControl.currentPage = indexPath.row;
     
     return cell;

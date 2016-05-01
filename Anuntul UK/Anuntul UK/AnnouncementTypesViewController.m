@@ -16,7 +16,7 @@
 #import "PayPalMobile.h"
 #import "NSString+RemovedCharacters.h"
 
-#define kPayPalEnvironment PayPalEnvironmentSandbox
+#define kPayPalEnvironment PayPalEnvironmentProduction
 
 
 @interface AnnouncementTypesViewController()<UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate,PayPalFuturePaymentDelegate, PayPalPaymentDelegate> {
