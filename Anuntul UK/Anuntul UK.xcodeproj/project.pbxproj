@@ -16,6 +16,8 @@
 		F103F0941CCFE58B007F4B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F103F0921CCFE58B007F4B8A /* LaunchScreen.storyboard */; };
 		F103F09F1CCFE58B007F4B8A /* Anuntul_UKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F103F09E1CCFE58B007F4B8A /* Anuntul_UKTests.m */; };
 		F103F0AA1CCFE58B007F4B8A /* Anuntul_UKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F103F0A91CCFE58B007F4B8A /* Anuntul_UKUITests.m */; };
+		F12787191CD934A0009FEF33 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = F12787171CD934A0009FEF33 /* Default-568h.png */; };
+		F127871A1CD934A0009FEF33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12787181CD934A0009FEF33 /* Default-568h@2x.png */; };
 		F1A867561CCFE7570049B9AC /* AdsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A867091CCFE7570049B9AC /* AdsDetailsViewController.m */; };
 		F1A867571CCFE7570049B9AC /* AdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A8670B1CCFE7570049B9AC /* AdTableViewCell.m */; };
 		F1A867581CCFE7570049B9AC /* AnnouncementImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A8670D1CCFE7570049B9AC /* AnnouncementImageCollectionViewCell.m */; };
@@ -95,6 +97,8 @@
 		F103F0A51CCFE58B007F4B8A /* Anuntul UKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Anuntul UKUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F103F0A91CCFE58B007F4B8A /* Anuntul_UKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Anuntul_UKUITests.m; sourceTree = "<group>"; };
 		F103F0AB1CCFE58B007F4B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F12787171CD934A0009FEF33 /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
+		F12787181CD934A0009FEF33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F1A867081CCFE7570049B9AC /* AdsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdsDetailsViewController.h; sourceTree = "<group>"; };
 		F1A867091CCFE7570049B9AC /* AdsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdsDetailsViewController.m; sourceTree = "<group>"; };
 		F1A8670A1CCFE7570049B9AC /* AdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdTableViewCell.h; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 		F103F0831CCFE58B007F4B8A /* Anuntul UK */ = {
 			isa = PBXGroup;
 			children = (
+				F12787171CD934A0009FEF33 /* Default-568h.png */,
+				F12787181CD934A0009FEF33 /* Default-568h@2x.png */,
 				F103F0871CCFE58B007F4B8A /* AppDelegate.h */,
 				F103F0881CCFE58B007F4B8A /* AppDelegate.m */,
 				F103F08A1CCFE58B007F4B8A /* ViewController.h */,
@@ -471,8 +477,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12787191CD934A0009FEF33 /* Default-568h.png in Resources */,
 				F103F0941CCFE58B007F4B8A /* LaunchScreen.storyboard in Resources */,
 				F103F0911CCFE58B007F4B8A /* Assets.xcassets in Resources */,
+				F127871A1CD934A0009FEF33 /* Default-568h@2x.png in Resources */,
 				F103F08F1CCFE58B007F4B8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,13 +753,13 @@
 			baseConfigurationReference = AA8239B57459523EA289E6D5 /* Pods-Anuntul UK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Marius Chitu (39XP9B4NG9)";
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntuldeuk;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntul.uk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31ec22aa-66fd-4618-8c33-3b057364f651";
+				PROVISIONING_PROFILE = "3d802bdf-7562-4b60-9c55-02094a6f3663";
 			};
 			name = Debug;
 		};
@@ -760,13 +768,13 @@
 			baseConfigurationReference = 3035ECC5C06569A0356961A6 /* Pods-Anuntul UK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Marius Chitu (39XP9B4NG9)";
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntuldeuk;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntul.uk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31ec22aa-66fd-4618-8c33-3b057364f651";
+				PROVISIONING_PROFILE = "3d802bdf-7562-4b60-9c55-02094a6f3663";
 			};
 			name = Release;
 		};

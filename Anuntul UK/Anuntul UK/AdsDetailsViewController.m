@@ -80,12 +80,20 @@
     
     self.viewsLabel.frame = CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) - 15, CGRectGetWidth(self.scrollView.frame) - 20, 44);
     NSInteger imageHeight = 0;
-    self.collectionView.frame = CGRectMake(10, CGRectGetMaxY(self.viewsLabel.frame) - 10,  CGRectGetWidth(self.scrollView.frame) - 20, 200);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.collectionView.frame = CGRectMake(10, CGRectGetMaxY(self.viewsLabel.frame) - 10,  CGRectGetWidth(self.scrollView.frame) - 20, 550);
+    } else {
+        self.collectionView.frame = CGRectMake(10, CGRectGetMaxY(self.viewsLabel.frame) - 10,  CGRectGetWidth(self.scrollView.frame) - 20, 200);
+    }
     
     self.pageControl.frame = CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) - 10, CGRectGetWidth(self.collectionView.frame), 10);
     
     if ([self.adDetails[@"images"] count]) {
-        imageHeight = 200;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            imageHeight = 550;
+        } else {
+            imageHeight = 200;
+        }
     }
     if (self.collectionView) {
         self.descriptionLabel.frame = CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + 10, CGRectGetWidth(self.scrollView.frame) - 20, 0);
