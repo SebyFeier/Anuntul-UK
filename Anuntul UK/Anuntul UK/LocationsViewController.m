@@ -120,8 +120,8 @@
     NSArray *locations = [countryLocation objectForKey:@"locations"];
     NSDictionary *location = [locations objectAtIndex:indexPath.row];
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-//    [[WebServiceManager sharedInstance] getAllAdsFromLocation:location[@"id"] withPageNumber:[NSNumber numberWithInteger:1] withCompletionBlock:^(NSArray *array, NSError *error) {
-    [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:[NSString stringWithFormat:@"%@",location[@"id"]] andCategory:@"" andPageNumber:[NSNumber numberWithInteger:1] withCompletionBlock:^(NSArray *array, NSError *error) {
+    [[WebServiceManager sharedInstance] getAllAdsFromLocation:location[@"id"] withPageNumber:[NSNumber numberWithInteger:1] withCompletionBlock:^(NSArray *array, NSError *error) {
+//    [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:[NSString stringWithFormat:@"%@",location[@"id"]] andCategory:@"" andPageNumber:[NSNumber numberWithInteger:1] withCompletionBlock:^(NSArray *array, NSError *error) {
 
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
         if (!error) {

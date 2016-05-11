@@ -160,8 +160,8 @@
                ) {
         NSDictionary *cellInfo = [[[WebServiceManager sharedInstance] listOfCategories] objectAtIndex:indexPath.row];
         [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-//        [[WebServiceManager sharedInstance] getAdsFromCategory:[cellInfo objectForKey:@"id_categ"] andPage:[NSNumber numberWithInt:1] withCompletionBlock:^(NSArray *array, NSError *error) {
-        [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:@"" andCategory:[NSString stringWithFormat:@"%@",cellInfo[@"id_categ"]] andPageNumber:[NSNumber numberWithInt:1] withCompletionBlock:^(NSArray *array, NSError *error) {
+        [[WebServiceManager sharedInstance] getAdsFromCategory:[cellInfo objectForKey:@"id_categ"] andPage:[NSNumber numberWithInt:1] withCompletionBlock:^(NSArray *array, NSError *error) {
+//        [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:@"" andCategory:[NSString stringWithFormat:@"%@",cellInfo[@"id_categ"]] andPageNumber:[NSNumber numberWithInt:1] withCompletionBlock:^(NSArray *array, NSError *error) {
 
             [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
             if (!error) {

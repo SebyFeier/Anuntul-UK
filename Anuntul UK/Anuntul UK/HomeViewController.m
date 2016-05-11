@@ -326,8 +326,8 @@
         [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
         if (!_isPremium) {
             if (!_searchResultsRequired) {
-//                [[WebServiceManager sharedInstance] getAdsFromCategory:[[WebServiceManager sharedInstance] categoryId] andPage:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
-                [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:@"" andCategory:[NSString stringWithFormat:@"%@",[[WebServiceManager sharedInstance] categoryId]] andPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
+                [[WebServiceManager sharedInstance] getAdsFromCategory:[[WebServiceManager sharedInstance] categoryId] andPage:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
+//                [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:@"" andCategory:[NSString stringWithFormat:@"%@",[[WebServiceManager sharedInstance] categoryId]] andPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
 
                     [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window]
                                          animated:YES];

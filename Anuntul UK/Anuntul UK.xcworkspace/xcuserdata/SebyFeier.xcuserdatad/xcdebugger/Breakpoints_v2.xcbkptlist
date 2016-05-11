@@ -186,12 +186,12 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/EmailViewController.m"
-                  timestampString = "483725284.111964"
+                  timestampString = "484603429.494776"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "208"
                   endingLineNumber = "208"
-                  offsetFromSymbolStart = "3590">
+                  offsetFromSymbolStart = "3212">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -201,12 +201,12 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/EmailViewController.m"
-                  timestampString = "483725284.112344"
+                  timestampString = "484603429.494938"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "209"
                   endingLineNumber = "209"
-                  offsetFromSymbolStart = "78">
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -218,12 +218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anuntul UK/WebServiceManager.m"
-            timestampString = "483724489.816261"
+            timestampString = "484601667.832238"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-getSearchResultsWithKeyWord:andLocation:andCategory:andPageNumber:withCompletionBlock:"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "-getAllAdsFromLocation:withPageNumber:withCompletionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,12 +234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anuntul UK/WebServiceManager.m"
-            timestampString = "483725274.398222"
+            timestampString = "484601665.055658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-getSearchResultsWithKeyWord:andLocation:andCategory:andPageNumber:withCompletionBlock:"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "-getAllAdsFromLocation:withPageNumber:withCompletionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,12 +250,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anuntul UK/WebServiceManager.m"
-            timestampString = "483725275.18328"
+            timestampString = "484601665.774212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-getSearchResultsWithKeyWord:andLocation:andCategory:andPageNumber:withCompletionBlock:"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "-getAllAdsFromLocation:withPageNumber:withCompletionBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/LocationsViewController.m"
+            timestampString = "484601863.928824"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/LocationAdsViewController.m"
+            timestampString = "484601957.026602"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-tableView:willDisplayCell:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

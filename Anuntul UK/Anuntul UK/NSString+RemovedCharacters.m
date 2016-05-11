@@ -42,38 +42,38 @@
     char cString[] = "\u00c8\u2122";
     NSData *data = [NSData dataWithBytes:cString length:strlen(cString)];
     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"result string: %@", string);
+//    NSLog(@"result string: %@", string);
     descriptionText = [descriptionText stringByReplacingOccurrencesOfString:string withString:@"ş"];
     
     
     char cString2[] = "\u00c4\u0192";
     data = [NSData dataWithBytes:cString2 length:strlen(cString2)];
     string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"result string: %@", string);
+//    NSLog(@"result string: %@", string);
     descriptionText = [descriptionText stringByReplacingOccurrencesOfString:string withString:@"ă"];
     
     char cString3[] = "\u00c8\u203a";
     data = [NSData dataWithBytes:cString3 length:strlen(cString3)];
     string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"result string: %@", string);
+//    NSLog(@"result string: %@", string);
     descriptionText = [descriptionText stringByReplacingOccurrencesOfString:string withString:@"ț"];
     
     char cString4[] = "\u00e2\u20ac";
     data = [NSData dataWithBytes:cString4 length:strlen(cString4)];
     string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"result string: %@", string);
+//    NSLog(@"result string: %@", string);
     descriptionText = [descriptionText stringByReplacingOccurrencesOfString:string withString:@"'"];
     
     char cString5[] = "\u00c3\u00a2";
     data = [NSData dataWithBytes:cString5 length:strlen(cString5)];
     string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"result string: %@", string);
+//    NSLog(@"result string: %@", string);
     descriptionText = [descriptionText stringByReplacingOccurrencesOfString:string withString:@"â"];
     
     char cString6[] = "\u00c2\u00a3";
     data = [NSData dataWithBytes:cString6 length:strlen(cString6)];
     string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"result string: %@", string);
+//    NSLog(@"result string: %@", string);
     descriptionText = [descriptionText stringByReplacingOccurrencesOfString:string withString:@"£"];
     
     return descriptionText;

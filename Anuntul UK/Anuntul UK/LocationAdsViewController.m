@@ -166,8 +166,8 @@
     if (indexPath.row == self.locationAds.count - 3) {
         [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
         if (self.isLocations) {
-//            [[WebServiceManager sharedInstance] getAllAdsFromLocation:self.locationId withPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
-            [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:[NSString stringWithFormat:@"%@",self.locationId] andCategory:@"" andPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
+            [[WebServiceManager sharedInstance] getAllAdsFromLocation:self.locationId withPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
+//            [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:[NSString stringWithFormat:@"%@",self.locationId] andCategory:@"" andPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
 
             
                 [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
