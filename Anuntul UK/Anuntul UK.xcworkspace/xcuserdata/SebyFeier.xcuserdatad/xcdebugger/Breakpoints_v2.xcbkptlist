@@ -186,7 +186,7 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/EmailViewController.m"
-                  timestampString = "484603429.494776"
+                  timestampString = "484775460.099729"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "208"
@@ -201,7 +201,7 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/EmailViewController.m"
-                  timestampString = "484603429.494938"
+                  timestampString = "484775460.099868"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "209"
@@ -288,6 +288,22 @@
             startingLineNumber = "170"
             endingLineNumber = "170"
             landmarkName = "-tableView:willDisplayCell:forRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/CategoryTableViewCell.m"
+            timestampString = "484775394.411874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-updateCellWithInfo:withMyProfile:andIndexpath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

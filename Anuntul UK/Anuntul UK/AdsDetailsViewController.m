@@ -469,14 +469,14 @@
     
     
     if (!self.toPublish) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-        NSString *currentDateString = self.adDetails[@"timp"];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
-        NSDate *currentDate = [dateFormatter dateFromString:currentDateString];
-        
-        NSLog(@"CurrentDate:%@", currentDate);
-        [dateFormatter setDateFormat:@"dd MMM yyyy', 'hh:mm"];
-        NSString *dateString = [dateFormatter stringFromDate:currentDate];
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        NSString *dateString = self.adDetails[@"timp"];
+//        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+//        NSDate *currentDate = [dateFormatter dateFromString:currentDateString];
+//        
+//        NSLog(@"CurrentDate:%@", currentDate);
+//        [dateFormatter setDateFormat:@"dd MMM yyyy', 'hh:mm"];
+//        NSString *dateString = [dateFormatter stringFromDate:currentDate];
 //
 //        
         if ([[self.adDetails[@"location"] objectForKey:@"titlu"] length]) {

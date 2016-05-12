@@ -58,13 +58,13 @@
     self.adNameLabel.text = [NSString removeCharacterFromString:cellInfo[@"titlu"]];
     self.adNameLabel.text = [self.adNameLabel.text stringByAppendingString:@"\n"];
 //    self.adCategoryLabel.text = cellInfo[@"data"];
-    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
-    NSString *registeredDateString = [cellInfo objectForKey:@"data"];
-    [dateFormatter2 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
-    NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
-    
-    [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
-    NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
+//    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
+    NSString *newDateString = [cellInfo objectForKey:@"data"];
+//    [dateFormatter2 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+//    NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
+//    
+//    [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
+//    NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
     self.adCategoryLabel.text = newDateString;
 //    self.adCategoryLabel.text = @"Date";
     if (cellInfo[@"location"]) {
