@@ -27,7 +27,6 @@
     NSDictionary *selectedLocation;
     NSMutableArray *allCategories;
     NSMutableArray *allLocations;
-    BOOL _searchResultsRequired;
     BOOL isCategorySelected;
 }
 @property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
@@ -485,6 +484,8 @@
             }
             [[WebServiceManager sharedInstance] setCategoryName:headerTitle];
             [self.categoriesTableView reloadData];
+            [self.categoriesTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
             NSString *string = [[WebServiceManager sharedInstance] categoryName];
             self.navigationItem.title = string;
             self.tabBarController.navigationItem.title = string;

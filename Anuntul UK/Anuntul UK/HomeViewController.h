@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *listOfAds;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
+@property (nonatomic, assign) BOOL searchResultsRequired;
 
 @end

@@ -753,13 +753,13 @@
 			baseConfigurationReference = AA8239B57459523EA289E6D5 /* Pods-Anuntul UK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Marius Chitu (Q39GM2R328)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntul.uk;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntuldeuk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65853cbc-1351-4bdd-9f7e-72c6e0ccb14c";
+				PROVISIONING_PROFILE = "31ec22aa-66fd-4618-8c33-3b057364f651";
 			};
 			name = Debug;
 		};
@@ -768,13 +768,13 @@
 			baseConfigurationReference = 3035ECC5C06569A0356961A6 /* Pods-Anuntul UK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Marius Chitu (Q39GM2R328)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntul.uk;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntuldeuk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65853cbc-1351-4bdd-9f7e-72c6e0ccb14c";
+				PROVISIONING_PROFILE = "31ec22aa-66fd-4618-8c33-3b057364f651";
 			};
 			name = Release;
 		};

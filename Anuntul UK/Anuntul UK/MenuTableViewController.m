@@ -143,6 +143,7 @@
                 [[WebServiceManager sharedInstance] setBottomConstraint:-50];
                 HomeViewController *locationsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewControllerIdentifier"];
                 CATransition* transition = [CATransition animation];
+                locationsViewController.searchResultsRequired = YES;
                 transition.duration = 0.5;
                 transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
                 transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade

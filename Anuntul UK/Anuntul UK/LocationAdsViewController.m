@@ -13,6 +13,7 @@
 #import "HexColors.h"
 #import "CategoryTableViewCell.h"
 #import "MBProgressHUD.h"
+#import "AnnouncementTypesViewController.h"
 
 @interface LocationAdsViewController()<AdsDelegate, UIActionSheetDelegate> {
     NSInteger _pageNumber;
@@ -152,13 +153,16 @@
             }
         }];
     } else if (buttonIndex == 0) {
-        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-        [[WebServiceManager sharedInstance] republishAnnouncementForAnnouncementId:cellInfo[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-            if ([dictionary[@"success"] boolValue]) {
-                [self.tableView reloadData];
-            }
-        }];
+        AnnouncementTypesViewController *announcementTypes = [self.storyboard instantiateViewControllerWithIdentifier:@"AnnouncementTypesViewControllerIdentifier"];
+        [self.navigationController pushViewController:announcementTypes animated:YES];
+//        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+//        [[WebServiceManager sharedInstance] republishAnnouncementForAnnouncementId:cellInfo[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+//            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+//            if ([dictionary[@"success"] boolValue]) {
+//                [self.tableView reloadData];
+//            }
+//        }];
+        
     }
 }
 
