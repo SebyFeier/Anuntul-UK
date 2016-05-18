@@ -51,9 +51,27 @@
     self.navigationItem.title = @"Alege tip anunț";
     self.tabBarController.navigationItem.title = @"Alege tip anunț";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    if (self.republishedAnnouncement) {
+        UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 15) ];
+        [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
+                                               initWithCustomView:backButton];
+        [leftBarButtonItem1 setTintColor:[UIColor blackColor]];
+        
+        //set the action for button
+        
+        
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem1;
+
+    }
 
 }
 
+- (void)backButtonTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)goToMainMenu:(id)sender {
     CATransition* transition = [CATransition animation];
@@ -221,9 +239,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *announcementType = [announcementTypes objectAtIndex:indexPath.row];
 //    if (indexPath.row == 0) {
-        CreateAnnouncementViewController *createAnnouncement = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateAnnouncementViewControllerIdentifier"];
-        createAnnouncement.announcementType = announcementType;
-        [self.navigationController pushViewController:createAnnouncement animated:YES];
+    CreateAnnouncementViewController *createAnnouncement = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateAnnouncementViewControllerIdentifier"];
+    createAnnouncement.announcementType = announcementType;
+    createAnnouncement.republishedAnnouncement = self.republishedAnnouncement;
+    [self.navigationController pushViewController:createAnnouncement animated:YES];
 //    } else {
 //        
 //        _indexPath = indexPath;

@@ -18,6 +18,7 @@
 #import "UIView+Borders.h"
 #import "SelectionViewController.h"
 #import "PictureViewController.h"
+#import "Haneke.h"
 
 NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
 
@@ -92,6 +93,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     [self.agreeLabel addLeftBorderWithWidth:0.5 andColor:[UIColor whiteColor]];
     [self.agreeLabel addRightBorderWithWidth:0.5 andColor:[UIColor whiteColor]];
     [self.agreeLabel addBottomBorderWithHeight:0.5 andColor:[UIColor whiteColor]];
+    
     
     
     
@@ -179,22 +181,10 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     for (NSDictionary *location in locations) {
         [allLocations addObjectsFromArray:location[@"locations"]];
     }
-    
     self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.imageView1.image = [UIImage imageNamed:@"add_image"];
-    
-    
     self.imageView1.frame = CGRectMake(20, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
-    
-    
-    
     [self.scrollView addSubview:self.imageView1];
-    self.imageView1.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
-    self.imageView1.tag = 111;
-    [self.imageView1 addGestureRecognizer:tapGesture1];
-    
-    
+
     self.agreeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     
     self.agreeLabel.font = [UIFont systemFontOfSize:11];
@@ -260,6 +250,225 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     //    self.descriptionTextView.layer.cornerRadius = 10.0f;
     
     
+    if (self.republishedAnnouncement) {
+        self.titleTextField.text = self.republishedAnnouncement[@"titlu"];
+//        self.titleTextField.enabled = NO;
+        self.descriptionTextView.text = self.republishedAnnouncement[@"descriere"];
+//        self.descriptionTextView.editable = NO;
+        self.phoneTextField.text = self.republishedAnnouncement[@"telefon1"];
+//        self.phoneTextField.enabled = NO;
+        [self.locationButton setTitle:[self.republishedAnnouncement[@"location"] objectForKey:@"titlu"] forState:UIControlStateNormal];
+//        self.locationButton.enabled = NO;
+//        self.categoryButton.enabled = NO;
+//        selectedLocation
+        if (self.republishedAnnouncement[@"images"] && [self.republishedAnnouncement[@"images"] count]) {
+            numberOfImages = [self.republishedAnnouncement[@"images"] count];
+            if (numberOfImages == 1) {
+
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+            } else if (numberOfImages == 2) {
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+//                self.imageView2.image = [UIImage imageNamed:@"add_image"];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+            } else if (numberOfImages == 3) {
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+
+            } else if (numberOfImages == 4) {
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView4];
+
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
+
+            } else if (numberOfImages == 5) {
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView4];
+                self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
+                self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
+                self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                [self.scrollView addSubview:self.imageView5];
+
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
+            } else if (numberOfImages == 6) {
+                
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView4];
+                self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
+                self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
+                self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                [self.scrollView addSubview:self.imageView5];
+                self.imageView6 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView6.frame = CGRectMake(90, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView6];
+
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView6 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]];
+            } else if (numberOfImages == 7) {
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView4];
+                self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
+                self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
+                self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                [self.scrollView addSubview:self.imageView5];
+                self.imageView6 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView6.frame = CGRectMake(90, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView6];
+                self.imageView7 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView7.frame = CGRectMake(160, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView7];
+
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView6 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView7 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]];
+            } else if (numberOfImages == 8) {
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView4];
+                self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
+                self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
+                self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                [self.scrollView addSubview:self.imageView5];
+                self.imageView6 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView6.frame = CGRectMake(90, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView6];
+                self.imageView7 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView7.frame = CGRectMake(160, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView7];
+                self.imageView8 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView8.frame = CGRectMake(230, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView8];
+
+                [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView6 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView7 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]];
+                [self.imageView8 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][7] objectForKey:@"img"] objectForKey:@"url"]]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]];
+                [images addObject:[[self.republishedAnnouncement[@"images"][7] objectForKey:@"img"] objectForKey:@"url"]];
+            }
+        }
+    } else {
+        self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
+        self.imageView1.image = [UIImage imageNamed:@"add_image"];
+        self.imageView1.frame = CGRectMake(20, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+        [self.scrollView addSubview:self.imageView1];
+
+        self.imageView1.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+        self.imageView1.tag = 111;
+        [self.imageView1 addGestureRecognizer:tapGesture1];
+    }
     
 }
 
@@ -1578,6 +1787,11 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                             NSDictionary *adDetails = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"afisari", selectedLocation[@"titlu"],@"city",self.descriptionTextView.text,@"descriere",@"123123",@"id_anunt",self.phoneTextField.text,@"telefon1", images?images:[NSArray array],@"images", dateString,@"timp", self.titleTextField.text,@"titlu", user,@"user" , nil];
                             AdsDetailsViewController *adsDetailsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdsDetailsViewControllerIdentifier"];
                             adsDetailsViewController.adDetails = adDetails;
+//                            if (self.republishedAnnouncement) {
+                                adsDetailsViewController.republishedAnnouncement = self.republishedAnnouncement;
+//                            } else {
+//                                adsDetailsViewController.shouldDeleteAd = NO;
+//                            }
                             NSDictionary *announcementInfo = [NSDictionary dictionaryWithObjectsAndKeys:selectedCategory[@"id_categ"]?selectedCategory[@"id_categ"]:@"",@"id_categ",selectedLocation[@"id"],@"id_locatie",[[NSUserDefaults standardUserDefaults] objectForKey:@"id_user" ],@"id_user", self.announcementType[@"id"],@"setari_anunturi_id",self.phoneTextField.text,@"telefon",self.titleTextField.text,@"titlu",self.descriptionTextView.text,@"descriere", nil];
                             adsDetailsViewController.toPublish = YES;
                             adsDetailsViewController.announcementInfo = announcementInfo;

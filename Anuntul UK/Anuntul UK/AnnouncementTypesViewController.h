@@ -10,4 +10,6 @@
 
 @interface AnnouncementTypesViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *republishedAnnouncement;
+
 @end

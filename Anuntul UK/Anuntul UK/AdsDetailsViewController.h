@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSDictionary *announcementType;
 @property (nonatomic, assign) BOOL toPublish;
 @property (nonatomic, strong) PayPalPayment *paypalPayment;
+@property (nonatomic, assign) NSDictionary *republishedAnnouncement;
 
 @end

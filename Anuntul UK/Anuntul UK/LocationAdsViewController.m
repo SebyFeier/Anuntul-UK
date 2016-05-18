@@ -154,6 +154,7 @@
         }];
     } else if (buttonIndex == 0) {
         AnnouncementTypesViewController *announcementTypes = [self.storyboard instantiateViewControllerWithIdentifier:@"AnnouncementTypesViewControllerIdentifier"];
+        announcementTypes.republishedAnnouncement = cellInfo;
         [self.navigationController pushViewController:announcementTypes animated:YES];
 //        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
 //        [[WebServiceManager sharedInstance] republishAnnouncementForAnnouncementId:cellInfo[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
