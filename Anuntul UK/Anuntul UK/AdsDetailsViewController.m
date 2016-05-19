@@ -246,22 +246,22 @@
                         self.tabBarController.tabBar.hidden = NO;
 //                    }
 //                    [self.navigationController popToRootViewControllerAnimated:YES];
-                    if (self.republishedAnnouncement) {
-                        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-                        [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-                            if ([dictionary[@"success"] boolValue]) {
-                                //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
-                                //                            [self.tableView reloadData];
-                                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-                                [self.navigationController pushViewController:successViewController animated:YES];
-                                
-                            }
-                        }];
-                    } else {
+//                    if (self.republishedAnnouncement) {
+//                        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+//                        [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+//                            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+//                            if ([dictionary[@"success"] boolValue]) {
+//                                //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
+//                                //                            [self.tableView reloadData];
+//                                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+//                                [self.navigationController pushViewController:successViewController animated:YES];
+//                                
+//                            }
+//                        }];
+//                    } else {
                     SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
                     [self.navigationController pushViewController:successViewController animated:YES];
-                    }
+//                    }
                 } else {
                     newAnnouncement = dictionary;
 //                    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
@@ -333,23 +333,23 @@
                 }
 //                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
 //                [self.navigationController pushViewController:successViewController animated:YES];
-                if (self.republishedAnnouncement) {
-                [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-                [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                    [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-                    if ([dictionary[@"success"] boolValue]) {
-                        //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
-                        //                            [self.tableView reloadData];
-                        SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-                        [self.navigationController pushViewController:successViewController animated:YES];
-                        
-                    }
-                }];
-                } else {
+//                if (self.republishedAnnouncement) {
+//                [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+//                [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+//                    [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+//                    if ([dictionary[@"success"] boolValue]) {
+//                        //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
+//                        //                            [self.tableView reloadData];
+//                        SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+//                        [self.navigationController pushViewController:successViewController animated:YES];
+//                        
+//                    }
+//                }];
+//                } else {
                     SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
                     [self.navigationController pushViewController:successViewController animated:YES];
 
-                }
+//                }
 
             } else {
                 [[[UIAlertView alloc] initWithTitle:@"Eroare" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

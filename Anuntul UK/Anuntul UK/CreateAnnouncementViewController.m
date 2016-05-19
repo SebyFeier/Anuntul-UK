@@ -252,15 +252,17 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     
     if (self.republishedAnnouncement) {
         self.titleTextField.text = self.republishedAnnouncement[@"titlu"];
-//        self.titleTextField.enabled = NO;
+        self.titleTextField.enabled = NO;
         self.descriptionTextView.text = self.republishedAnnouncement[@"descriere"];
-//        self.descriptionTextView.editable = NO;
+        self.descriptionTextView.editable = NO;
         self.phoneTextField.text = self.republishedAnnouncement[@"telefon1"];
-//        self.phoneTextField.enabled = NO;
-        [self.locationButton setTitle:[self.republishedAnnouncement[@"location"] objectForKey:@"titlu"] forState:UIControlStateNormal];
-//        self.locationButton.enabled = NO;
-//        self.categoryButton.enabled = NO;
-//        selectedLocation
+        self.phoneTextField.enabled = NO;
+        selectedLocation = self.republishedAnnouncement[@"location"];
+        selectedCategory = self.republishedAnnouncement[@"category"];
+        [self.locationButton setTitle:[selectedLocation objectForKey:@"titlu"] forState:UIControlStateNormal];
+        [self.categoryButton setTitle:[selectedCategory objectForKey:@"titlu"] forState:UIControlStateNormal];
+        self.locationButton.enabled = NO;
+        self.categoryButton.enabled = NO;
         if (self.republishedAnnouncement[@"images"] && [self.republishedAnnouncement[@"images"] count]) {
             numberOfImages = [self.republishedAnnouncement[@"images"] count];
             if (numberOfImages == 1) {
