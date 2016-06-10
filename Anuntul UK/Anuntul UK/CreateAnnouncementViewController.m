@@ -187,13 +187,13 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
 
     self.agreeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     
-    self.agreeLabel.font = [UIFont systemFontOfSize:11];
+    self.agreeLabel.font = [UIFont systemFontOfSize:15];
     
     NSString *agreeTermsText = @"Sunt de acord cu Termenii și Condițiile";
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:agreeTermsText];
     NSRange range=[agreeTermsText rangeOfString:@"Termenii și Condițiile"];
     
-    UIFont *font = [UIFont boldSystemFontOfSize:11];
+    UIFont *font = [UIFont boldSystemFontOfSize:15];
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font
                                                                 forKey:NSFontAttributeName];
     [attrString addAttributes:attrsDictionary range:range];
@@ -203,7 +203,8 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     self.agreeLabel.textColor = [UIColor blackColor];
     self.agreeLabel.attributedText = attrString;
     
-    self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 20, 44);
+    self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 80, 44);
+    self.agreeLabel.numberOfLines = 0;
     //    self.agreeLabel.text = @"Sunt de acord cu Termenii si conditiile...";
     self.agreeLabel.textColor = [UIColor hx_colorWithHexString:@"BFBFBF"];
     [self.scrollView addSubview:self.agreeLabel];
@@ -251,24 +252,289 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     
     
     if (self.republishedAnnouncement) {
+
         self.titleTextField.text = self.republishedAnnouncement[@"titlu"];
-        self.titleTextField.enabled = NO;
+//        self.titleTextField.enabled = NO;
         self.descriptionTextView.text = self.republishedAnnouncement[@"descriere"];
-        self.descriptionTextView.editable = NO;
+//        self.descriptionTextView.editable = NO;
+//        self.descriptionTextView.textColor = [UIColor hx_colorWithHexString:@"BFBFBF"];
+        self.descriptionTextView.textColor = [UIColor blackColor];
         self.phoneTextField.text = self.republishedAnnouncement[@"telefon1"];
-        self.phoneTextField.enabled = NO;
+//        self.phoneTextField.enabled = NO;
+        [self.locationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.categoryButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         selectedLocation = self.republishedAnnouncement[@"location"];
         selectedCategory = self.republishedAnnouncement[@"category"];
         [self.locationButton setTitle:[selectedLocation objectForKey:@"titlu"] forState:UIControlStateNormal];
         [self.categoryButton setTitle:[selectedCategory objectForKey:@"titlu"] forState:UIControlStateNormal];
-        self.locationButton.enabled = NO;
-        self.categoryButton.enabled = NO;
+//        self.locationButton.enabled = NO;
+//        self.categoryButton.enabled = NO;
         if (self.republishedAnnouncement[@"images"] && [self.republishedAnnouncement[@"images"] count]) {
+            if (!images) {
+                images = [[NSMutableArray alloc] init];
+            }
+            if (!imagesData) {
+                imagesData = [[NSMutableArray alloc] init];
+            }
             numberOfImages = [self.republishedAnnouncement[@"images"] count];
             if (numberOfImages == 1) {
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 2) {
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 3) {
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img3) {
+                    [imagesData addObject:img3];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 4) {
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img3) {
+                    [imagesData addObject:img3];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img4) {
+                    [imagesData addObject:img4];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 5) {
+                
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img3) {
+                    [imagesData addObject:img3];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img4) {
+                    [imagesData addObject:img4];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img5 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img5) {
+                    [imagesData addObject:img5];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 6) {
+                
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img3) {
+                    [imagesData addObject:img3];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img4) {
+                    [imagesData addObject:img4];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img5 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img5) {
+                    [imagesData addObject:img5];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img6 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img6) {
+                    [imagesData addObject:img6];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 7) {
+                
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img3) {
+                    [imagesData addObject:img3];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img4) {
+                    [imagesData addObject:img4];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img5 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img5) {
+                    [imagesData addObject:img5];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img6 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img6) {
+                    [imagesData addObject:img6];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img7 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img7) {
+                    [imagesData addObject:img7];
+                } else {
+                    numberOfImages--;
+                }
+            } else if (numberOfImages == 8) {
+                
+                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img1) {
+                    [imagesData addObject:img1];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img2) {
+                    [imagesData addObject:img2];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img3) {
+                    [imagesData addObject:img3];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img4) {
+                    [imagesData addObject:img4];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img5 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img5) {
+                    [imagesData addObject:img5];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img6 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img6) {
+                    [imagesData addObject:img6];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img7 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img7) {
+                    [imagesData addObject:img7];
+                } else {
+                    numberOfImages--;
+                }
+                NSData *img8 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][7] objectForKey:@"img"] objectForKey:@"url"]]];
+                if (img8) {
+                    [imagesData addObject:img8];
+                } else {
+                    numberOfImages--;
+                }
+            }
+            if (numberOfImages == 0) {
+                self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView1.image = [UIImage imageNamed:@"add_image"];
+                self.imageView1.frame = CGRectMake(20, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView1];
+                
+                self.imageView1.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+            } else if (numberOfImages == 1) {
 
                 [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                //                self.imageView2.image = [UIImage imageNamed:@"add_image"];
+                self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView2];
+                self.imageView2.image = [UIImage imageNamed:@"add_image"];
+
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
+               
+                //                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
             } else if (numberOfImages == 2) {
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
 //                self.imageView2.image = [UIImage imageNamed:@"add_image"];
@@ -277,9 +543,25 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 
                 [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView3.frame = CGRectMake(160, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView3];
+                self.imageView3.image = [UIImage imageNamed:@"add_image"];
                 
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
             } else if (numberOfImages == 3) {
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
@@ -291,9 +573,30 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView4];
+                self.imageView4.image = [UIImage imageNamed:@"add_image"];
+                
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
+                UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView4.tag = 444;
+                [self.imageView4 addGestureRecognizer:tapGesture4];
 
             } else if (numberOfImages == 4) {
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -305,16 +608,45 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 self.imageView4 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView4.frame = CGRectMake(230, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
                 [self.scrollView addSubview:self.imageView4];
-
+                
+                self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView5];
+                self.imageView5.image = [UIImage imageNamed:@"add_image"];
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
+                self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
+                self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
+                self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
                 [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
-
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
+                UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView4.tag = 444;
+                [self.imageView4 addGestureRecognizer:tapGesture4];
+                UITapGestureRecognizer *tapGesture5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView5.tag = 555;
+                [self.imageView5 addGestureRecognizer:tapGesture5];
+                
             } else if (numberOfImages == 5) {
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
@@ -327,22 +659,50 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.scrollView addSubview:self.imageView4];
                 self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                [self.scrollView addSubview:self.imageView5];
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
-                [self.scrollView addSubview:self.imageView5];
 
                 [self.imageView1 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView2 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView3 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                self.imageView6 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView6.frame = CGRectMake(90, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView6];
+                self.imageView6.image = [UIImage imageNamed:@"add_image"];
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]]];
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
+                UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView4.tag = 444;
+                [self.imageView4 addGestureRecognizer:tapGesture4];
+                UITapGestureRecognizer *tapGesture5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView5.tag = 555;
+                [self.imageView5 addGestureRecognizer:tapGesture5];
+                UITapGestureRecognizer *tapGesture6 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView6.tag = 666;
+                [self.imageView6 addGestureRecognizer:tapGesture6];
+
             } else if (numberOfImages == 6) {
                 
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -356,7 +716,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.scrollView addSubview:self.imageView4];
                 self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -371,12 +731,44 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.imageView4 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView6 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                self.imageView7 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView7.frame = CGRectMake(160, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView7];
+                self.imageView7.image = [UIImage imageNamed:@"add_image"];
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
+                UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView4.tag = 444;
+                [self.imageView4 addGestureRecognizer:tapGesture4];
+                UITapGestureRecognizer *tapGesture5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView5.tag = 555;
+                [self.imageView5 addGestureRecognizer:tapGesture5];
+                UITapGestureRecognizer *tapGesture6 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView6.tag = 666;
+                [self.imageView6 addGestureRecognizer:tapGesture6];
+                UITapGestureRecognizer *tapGesture7 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView7.tag = 777;
+                [self.imageView7 addGestureRecognizer:tapGesture7];
             } else if (numberOfImages == 7) {
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
@@ -389,7 +781,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.scrollView addSubview:self.imageView4];
                 self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -408,6 +800,10 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.imageView5 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView6 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
                 [self.imageView7 hnk_setImageFromURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]];
+                self.imageView8 = [[UIImageView alloc] initWithFrame:CGRectZero];
+                self.imageView8.frame = CGRectMake(230, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
+                [self.scrollView addSubview:self.imageView8];
+                self.imageView8.image = [UIImage imageNamed:@"add_image"];
                 [images addObject:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]];
@@ -415,6 +811,38 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [images addObject:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
+                UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView4.tag = 444;
+                [self.imageView4 addGestureRecognizer:tapGesture4];
+                UITapGestureRecognizer *tapGesture5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView5.tag = 555;
+                [self.imageView5 addGestureRecognizer:tapGesture5];
+                UITapGestureRecognizer *tapGesture6 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView6.tag = 666;
+                [self.imageView6 addGestureRecognizer:tapGesture6];
+                UITapGestureRecognizer *tapGesture7 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView7.tag = 777;
+                [self.imageView7 addGestureRecognizer:tapGesture7];
+                UITapGestureRecognizer *tapGesture8 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView8.tag = 888;
+                [self.imageView8 addGestureRecognizer:tapGesture8];
             } else if (numberOfImages == 8) {
                 self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView2.frame = CGRectMake(90, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
@@ -427,7 +855,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [self.scrollView addSubview:self.imageView4];
                 self.imageView5 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -458,7 +886,50 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [images addObject:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]];
                 [images addObject:[[self.republishedAnnouncement[@"images"][7] objectForKey:@"img"] objectForKey:@"url"]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][6] objectForKey:@"img"] objectForKey:@"url"]]]];
+//                [imagesData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][7] objectForKey:@"img"] objectForKey:@"url"]]]];
+                
+                UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView1.tag = 111;
+                [self.imageView1 addGestureRecognizer:tapGesture1];
+                UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView2.tag = 222;
+                [self.imageView2 addGestureRecognizer:tapGesture2];
+                UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView3.tag = 333;
+                [self.imageView3 addGestureRecognizer:tapGesture3];
+                UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView4.tag = 444;
+                [self.imageView4 addGestureRecognizer:tapGesture4];
+                UITapGestureRecognizer *tapGesture5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView5.tag = 555;
+                [self.imageView5 addGestureRecognizer:tapGesture5];
+                UITapGestureRecognizer *tapGesture6 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView6.tag = 666;
+                [self.imageView6 addGestureRecognizer:tapGesture6];
+                UITapGestureRecognizer *tapGesture7 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView7.tag = 777;
+                [self.imageView7 addGestureRecognizer:tapGesture7];
+                UITapGestureRecognizer *tapGesture8 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+                self.imageView8.tag = 888;
+                [self.imageView8 addGestureRecognizer:tapGesture8];
             }
+        } else {
+            self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
+            self.imageView1.image = [UIImage imageNamed:@"add_image"];
+            self.imageView1.frame = CGRectMake(20, CGRectGetMaxY(self.locationButton.frame) + 15, 60, 60);
+            [self.scrollView addSubview:self.imageView1];
+            
+            self.imageView1.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userImageViewTapped:)];
+            self.imageView1.tag = 111;
+            [self.imageView1 addGestureRecognizer:tapGesture1];
         }
     } else {
         self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -471,7 +942,14 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
         self.imageView1.tag = 111;
         [self.imageView1 addGestureRecognizer:tapGesture1];
     }
-    
+    self.imageView1.userInteractionEnabled = YES;
+    self.imageView2.userInteractionEnabled = YES;
+    self.imageView3.userInteractionEnabled = YES;
+    self.imageView4.userInteractionEnabled = YES;
+    self.imageView5.userInteractionEnabled = YES;
+    self.imageView6.userInteractionEnabled = YES;
+    self.imageView7.userInteractionEnabled = YES;
+    self.imageView8.userInteractionEnabled = YES;
 }
 
 - (void)deleteButtonTappedWithNumberOfImages:(NSInteger)numberOfImagesRemaining andTag:(NSInteger)tag {
@@ -553,7 +1031,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 self.imageView3.image = [UIImage imageWithData:[imagesData objectAtIndex:2]];
                 self.imageView4.image = [UIImage imageNamed:@"add_image"];
                 [self.imageView5 removeFromSuperview];
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -569,7 +1047,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 self.imageView3.image = [UIImage imageWithData:[imagesData objectAtIndex:2]];
                 self.imageView4.image = [UIImage imageNamed:@"add_image"];
                 [self.imageView5 removeFromSuperview];
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -582,7 +1060,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 self.imageView3.image = [UIImage imageWithData:[imagesData objectAtIndex:2]];
                 self.imageView4.image = [UIImage imageNamed:@"add_image"];
                 [self.imageView5 removeFromSuperview];
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -592,7 +1070,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 [imagesData removeObjectAtIndex:3];
                 self.imageView4.image = [UIImage imageNamed:@"add_image"];
                 [self.imageView5 removeFromSuperview];
-                self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+                self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView1.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
                 self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
                 self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
                 self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -1557,7 +2035,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
         
         
         self.imageView5.frame = CGRectMake(20, CGRectGetMaxY(self.imageView1.frame) + 15, 60, 60);
-        self.agreeLabel.frame = CGRectMake(10, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
+        self.agreeLabel.frame = CGRectMake(15, CGRectGetMaxY(self.imageView5.frame) + 10, CGRectGetWidth(self.view.frame) - 60, 44);
         self.agreeSwitch.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40, CGRectGetMinY(self.agreeLabel.frame), 80, 44);
         self.agreeSwitch.center = CGPointMake(self.agreeSwitch.frame.origin.x, CGRectGetMidY(self.agreeLabel.frame));
         self.visualizeButton.frame = CGRectMake(20, CGRectGetMaxY(self.agreeLabel.frame) + 10, CGRectGetWidth(self.view.frame) - 40, 44);
@@ -1987,9 +2465,12 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
     if (isCategorySelected) {
         selectedCategory = selection;
         [self.categoryButton setTitle:selection[@"titlu"] forState:UIControlStateNormal];
+//        self.categoryButton.titleLabel.textColor = [UIColor blackColor];
+        [self.categoryButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     } else {
         selectedLocation = selection;
         [self.locationButton setTitle:selection[@"titlu"] forState:UIControlStateNormal];
+        [self.locationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
 

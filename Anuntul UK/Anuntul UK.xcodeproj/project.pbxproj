@@ -16,6 +16,15 @@
 		F103F0941CCFE58B007F4B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F103F0921CCFE58B007F4B8A /* LaunchScreen.storyboard */; };
 		F103F09F1CCFE58B007F4B8A /* Anuntul_UKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F103F09E1CCFE58B007F4B8A /* Anuntul_UKTests.m */; };
 		F103F0AA1CCFE58B007F4B8A /* Anuntul_UKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F103F0A91CCFE58B007F4B8A /* Anuntul_UKUITests.m */; };
+		F122CC261CF9A78B004D3A7D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC1D1CF9A78B004D3A7D /* Accelerate.framework */; };
+		F122CC271CF9A78B004D3A7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC1E1CF9A78B004D3A7D /* AudioToolbox.framework */; };
+		F122CC281CF9A78B004D3A7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC1F1CF9A78B004D3A7D /* AVFoundation.framework */; };
+		F122CC291CF9A78B004D3A7D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC201CF9A78B004D3A7D /* CoreLocation.framework */; };
+		F122CC2A1CF9A78B004D3A7D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC211CF9A78B004D3A7D /* CoreMedia.framework */; };
+		F122CC2B1CF9A78B004D3A7D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC221CF9A78B004D3A7D /* MessageUI.framework */; };
+		F122CC2C1CF9A78B004D3A7D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC231CF9A78B004D3A7D /* MobileCoreServices.framework */; };
+		F122CC2D1CF9A78B004D3A7D /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC241CF9A78B004D3A7D /* SafariServices.framework */; };
+		F122CC2E1CF9A78B004D3A7D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122CC251CF9A78B004D3A7D /* SystemConfiguration.framework */; };
 		F12787191CD934A0009FEF33 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = F12787171CD934A0009FEF33 /* Default-568h.png */; };
 		F127871A1CD934A0009FEF33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12787181CD934A0009FEF33 /* Default-568h@2x.png */; };
 		F1A867561CCFE7570049B9AC /* AdsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A867091CCFE7570049B9AC /* AdsDetailsViewController.m */; };
@@ -97,6 +106,15 @@
 		F103F0A51CCFE58B007F4B8A /* Anuntul UKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Anuntul UKUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F103F0A91CCFE58B007F4B8A /* Anuntul_UKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Anuntul_UKUITests.m; sourceTree = "<group>"; };
 		F103F0AB1CCFE58B007F4B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F122CC1D1CF9A78B004D3A7D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		F122CC1E1CF9A78B004D3A7D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F122CC1F1CF9A78B004D3A7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F122CC201CF9A78B004D3A7D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F122CC211CF9A78B004D3A7D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F122CC221CF9A78B004D3A7D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F122CC231CF9A78B004D3A7D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F122CC241CF9A78B004D3A7D /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		F122CC251CF9A78B004D3A7D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F12787171CD934A0009FEF33 /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
 		F12787181CD934A0009FEF33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F1A867081CCFE7570049B9AC /* AdsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdsDetailsViewController.h; sourceTree = "<group>"; };
@@ -186,6 +204,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F122CC261CF9A78B004D3A7D /* Accelerate.framework in Frameworks */,
+				F122CC271CF9A78B004D3A7D /* AudioToolbox.framework in Frameworks */,
+				F122CC281CF9A78B004D3A7D /* AVFoundation.framework in Frameworks */,
+				F122CC291CF9A78B004D3A7D /* CoreLocation.framework in Frameworks */,
+				F122CC2A1CF9A78B004D3A7D /* CoreMedia.framework in Frameworks */,
+				F122CC2B1CF9A78B004D3A7D /* MessageUI.framework in Frameworks */,
+				F122CC2C1CF9A78B004D3A7D /* MobileCoreServices.framework in Frameworks */,
+				F122CC2D1CF9A78B004D3A7D /* SafariServices.framework in Frameworks */,
+				F122CC2E1CF9A78B004D3A7D /* SystemConfiguration.framework in Frameworks */,
 				D6F928AE5A3F2C27FEEFC309 /* libPods-Anuntul UK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +237,15 @@
 		0567129F243BBBF0E946C531 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F122CC1D1CF9A78B004D3A7D /* Accelerate.framework */,
+				F122CC1E1CF9A78B004D3A7D /* AudioToolbox.framework */,
+				F122CC1F1CF9A78B004D3A7D /* AVFoundation.framework */,
+				F122CC201CF9A78B004D3A7D /* CoreLocation.framework */,
+				F122CC211CF9A78B004D3A7D /* CoreMedia.framework */,
+				F122CC221CF9A78B004D3A7D /* MessageUI.framework */,
+				F122CC231CF9A78B004D3A7D /* MobileCoreServices.framework */,
+				F122CC241CF9A78B004D3A7D /* SafariServices.framework */,
+				F122CC251CF9A78B004D3A7D /* SystemConfiguration.framework */,
 				3A02D798795E342E7FB20035 /* libPods-Anuntul UK.a */,
 			);
 			name = Frameworks;
@@ -754,6 +790,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Marius Chitu (39XP9B4NG9)";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -769,6 +806,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Marius Chitu (39XP9B4NG9)";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

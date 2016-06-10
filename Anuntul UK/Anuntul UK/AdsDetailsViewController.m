@@ -22,7 +22,6 @@
 #import "UIView+Borders.h"
 #import "SuccessViewController.h"
 
-#define kPayPalEnvironment PayPalEnvironmentProduction
 
 
 @interface AdsDetailsViewController ()<MFMailComposeViewControllerDelegate,PayPalFuturePaymentDelegate, PayPalPaymentDelegate, UICollectionViewDelegate, UICollectionViewDataSource> {
@@ -273,7 +272,7 @@
                     
                     _paypalConfig.languageOrLocale = [NSLocale preferredLanguages][0];
                     
-                    _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionNone;
+                    _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
                     [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
                     
                     PayPalItem *item1 = [PayPalItem itemWithName:[NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]] withQuantity:1 withPrice:[NSDecimalNumber decimalNumberWithString:self.announcementType[@"amount"]] withCurrency:@"GBP" withSku:self.announcementInfo[@"titlu"]];
@@ -293,12 +292,14 @@
                     payment.amount = total;
                     payment.currencyCode = @"GBP";
                     payment.shortDescription = [NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]];
+                    payment.intent = PayPalPaymentIntentSale;
                     payment.items = items;  // if not including multiple items, then leave payment.items as nil
                     payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
-                    _paypalConfig.acceptCreditCards = YES;
-                    
-                    PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:_paypalConfig delegate:self];
-                    [self presentViewController:paymentViewController animated:YES completion:nil];
+//                    _paypalConfig.acceptCreditCards = YES;
+                    if (payment.processable) {
+                        PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:_paypalConfig delegate:self];
+                        [self presentViewController:paymentViewController animated:YES completion:nil];
+                    }
 
                 }
             }
@@ -318,6 +319,7 @@
 //        if (!self.toPublish) {
             self.tabBarController.tabBar.hidden = NO;
 //        }
+        NSLog(@"%@",completedPayment.confirmation);
         NSString *email = @"";
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         if ([userDefaults objectForKey:@"email"]) {

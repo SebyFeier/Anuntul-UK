@@ -12,7 +12,6 @@
 #import "PayPalMobile.h"
 #import "MenuTableViewController.h"
 
-#define kPayPalEnvironment PayPalEnvironmentSandbox
 
 
 @interface MyAdsViewController ()<UITableViewDataSource, UITableViewDelegate, PayPalFuturePaymentDelegate, PayPalPaymentDelegate>
@@ -44,43 +43,6 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
 }
-- (void)promote:(id)sender {
-    _paypalConfig = [[PayPalConfiguration alloc] init];
-    _paypalConfig.acceptCreditCards = YES;
-    _paypalConfig.merchantName = @"Anuntul de UK";
-    _paypalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
-    _paypalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
-    
-    _paypalConfig.languageOrLocale = [NSLocale preferredLanguages][0];
-    
-    _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionNone;
-    [PayPalMobile preconnectWithEnvironment:kPayPalEnvironment];
-    
-    PayPalItem *item1 = [PayPalItem itemWithName:@"Ad1" withQuantity:1 withPrice:[NSDecimalNumber decimalNumberWithString:@"10"] withCurrency:@"EUR" withSku:@"ad1"];
-    NSArray *items = @[item1];
-    NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
-    
-    // Optional: include payment details
-    NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0"];
-    NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithString:@"0"];
-    PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
-                                                                               withShipping:shipping
-                                                                                    withTax:tax];
-    
-    NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
-    
-    PayPalPayment *payment = [[PayPalPayment alloc] init];
-    payment.amount = total;
-    payment.currencyCode = @"EUR";
-    payment.shortDescription = @"Ad Description";
-    payment.items = items;  // if not including multiple items, then leave payment.items as nil
-    payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
-    _paypalConfig.acceptCreditCards = YES;
-    
-    PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:_paypalConfig delegate:self];
-    [self presentViewController:paymentViewController animated:YES completion:nil];
-}
-
 - (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
     NSLog(@"PayPal Payment Success!");
     //    self.resultText = [completedPayment description];

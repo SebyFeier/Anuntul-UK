@@ -16,7 +16,6 @@
 #import "PayPalMobile.h"
 #import "NSString+RemovedCharacters.h"
 
-#define kPayPalEnvironment PayPalEnvironmentProduction
 
 
 @interface AnnouncementTypesViewController()<UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate,PayPalFuturePaymentDelegate, PayPalPaymentDelegate> {
@@ -243,44 +242,6 @@
     createAnnouncement.announcementType = announcementType;
     createAnnouncement.republishedAnnouncement = self.republishedAnnouncement;
     [self.navigationController pushViewController:createAnnouncement animated:YES];
-//    } else {
-//        
-//        _indexPath = indexPath;
-//        _paypalConfig = [[PayPalConfiguration alloc] init];
-//        _paypalConfig.acceptCreditCards = YES;
-//        _paypalConfig.merchantName = @"Anuntul de UK";
-//        _paypalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
-//        _paypalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
-//        
-//        _paypalConfig.languageOrLocale = [NSLocale preferredLanguages][0];
-//        
-//        _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionNone;
-//        [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentNoNetwork];
-//        
-//        PayPalItem *item1 = [PayPalItem itemWithName:announcementType[@"titlu"] withQuantity:1 withPrice:[NSDecimalNumber decimalNumberWithString:announcementType[@"amount"]] withCurrency:@"GBP" withSku:announcementType[@"titlu"]];
-//        NSArray *items = @[item1];
-//        NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
-//        
-//        // Optional: include payment details
-//        NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0"];
-//        NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithString:@"0"];
-//        PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
-//                                                                                   withShipping:shipping
-//                                                                                        withTax:tax];
-//        
-//        NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
-//        
-//        PayPalPayment *payment = [[PayPalPayment alloc] init];
-//        payment.amount = total;
-//        payment.currencyCode = @"GBP";
-//        payment.shortDescription = announcementType[@"titlu"];
-//        payment.items = items;  // if not including multiple items, then leave payment.items as nil
-//        payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
-//        _paypalConfig.acceptCreditCards = YES;
-//        
-//        PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:_paypalConfig delegate:self];
-//        [self presentViewController:paymentViewController animated:YES completion:nil];
-//    }
 }
 
 - (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
