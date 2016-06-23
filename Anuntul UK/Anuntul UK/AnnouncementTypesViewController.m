@@ -13,18 +13,18 @@
 #import "CreateAnnouncementViewController.h"
 #import "HexColors.h"
 #import "MenuTableViewController.h"
-#import "PayPalMobile.h"
+//#import "PayPalMobile.h"
 #import "NSString+RemovedCharacters.h"
 
 
 
-@interface AnnouncementTypesViewController()<UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate,PayPalFuturePaymentDelegate, PayPalPaymentDelegate> {
+@interface AnnouncementTypesViewController()<UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate/*PayPalFuturePaymentDelegate, PayPalPaymentDelegate*/> {
     NSArray *announcementTypes;
     NSIndexPath *_indexPath;
     
 }
 
-@property (nonatomic, strong) PayPalConfiguration *paypalConfig;
+//@property (nonatomic, strong) PayPalConfiguration *paypalConfig;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -244,34 +244,34 @@
     [self.navigationController pushViewController:createAnnouncement animated:YES];
 }
 
-- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
-    NSLog(@"PayPal Payment Success!");
-    //    self.resultText = [completedPayment description];
-    
-    
-    //    [self sendCompletedPaymentToServer:completedPayment]; // Payment was processed successfully; send to server for verification and fulfillment
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSDictionary *announcementType = [announcementTypes objectAtIndex:_indexPath.row];
-        CreateAnnouncementViewController *createAnnouncement = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateAnnouncementViewControllerIdentifier"];
-        createAnnouncement.announcementType = announcementType;
-        createAnnouncement.paypalPayment = completedPayment;
-        [self.navigationController pushViewController:createAnnouncement animated:YES];
-
-    }];
-}
-
-- (void)payPalFuturePaymentDidCancel:(PayPalFuturePaymentViewController *)futurePaymentViewController {
-    
-}
-
-- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
-    NSLog(@"PayPal Payment Canceled");
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)payPalFuturePaymentViewController:(PayPalFuturePaymentViewController *)futurePaymentViewController didAuthorizeFuturePayment:(NSDictionary *)futurePaymentAuthorization {
-    
-}
+//- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
+//    NSLog(@"PayPal Payment Success!");
+//    //    self.resultText = [completedPayment description];
+//    
+//    
+//    //    [self sendCompletedPaymentToServer:completedPayment]; // Payment was processed successfully; send to server for verification and fulfillment
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        NSDictionary *announcementType = [announcementTypes objectAtIndex:_indexPath.row];
+//        CreateAnnouncementViewController *createAnnouncement = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateAnnouncementViewControllerIdentifier"];
+//        createAnnouncement.announcementType = announcementType;
+//        createAnnouncement.paypalPayment = completedPayment;
+//        [self.navigationController pushViewController:createAnnouncement animated:YES];
+//
+//    }];
+//}
+//
+//- (void)payPalFuturePaymentDidCancel:(PayPalFuturePaymentViewController *)futurePaymentViewController {
+//    
+//}
+//
+//- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
+//    NSLog(@"PayPal Payment Canceled");
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
+//
+//- (void)payPalFuturePaymentViewController:(PayPalFuturePaymentViewController *)futurePaymentViewController didAuthorizeFuturePayment:(NSDictionary *)futurePaymentAuthorization {
+//    
+//}
 
 
 @end

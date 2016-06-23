@@ -9,14 +9,12 @@
 #import "MyAdsViewController.h"
 #import "CategoryTableViewCell.h"
 #import "AdsDetailsViewController.h"
-#import "PayPalMobile.h"
 #import "MenuTableViewController.h"
 
 
 
-@interface MyAdsViewController ()<UITableViewDataSource, UITableViewDelegate, PayPalFuturePaymentDelegate, PayPalPaymentDelegate>
+@interface MyAdsViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *listOfAdsViewController;
-@property (nonatomic, strong) PayPalConfiguration *paypalConfig;
 
 @end
 
@@ -42,23 +40,6 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
-}
-- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
-    NSLog(@"PayPal Payment Success!");
-    //    self.resultText = [completedPayment description];
-    
-    
-//    [self sendCompletedPaymentToServer:completedPayment]; // Payment was processed successfully; send to server for verification and fulfillment
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)payPalFuturePaymentDidCancel:(PayPalFuturePaymentViewController *)futurePaymentViewController {
-    
-}
-
-- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
-    NSLog(@"PayPal Payment Canceled");
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)goToMainMenu:(id)sender {

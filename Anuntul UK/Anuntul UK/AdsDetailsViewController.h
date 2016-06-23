@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PayPalMobile.h"
+//#import "PayPalMobile.h"
 
 @interface AdsDetailsViewController : UIViewController
 
@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSDictionary *announcementInfo;
 @property (nonatomic, strong) NSDictionary *announcementType;
 @property (nonatomic, assign) BOOL toPublish;
-@property (nonatomic, strong) PayPalPayment *paypalPayment;
+//@property (nonatomic, strong) PayPalPayment *paypalPayment;
 @property (nonatomic, assign) NSDictionary *republishedAnnouncement;
 
 @end

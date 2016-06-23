@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PayPalMobile.h"
+//#import "PayPalMobile.h"
 
 @interface CreateAnnouncementViewController : UIViewController
 
 @property (nonatomic, strong) NSDictionary *announcementType;
-@property (nonatomic, strong) PayPalPayment *paypalPayment;
+//@property (nonatomic, strong) PayPalPayment *paypalPayment;
 @property (nonatomic, strong) NSDictionary *republishedAnnouncement;
 
 @end

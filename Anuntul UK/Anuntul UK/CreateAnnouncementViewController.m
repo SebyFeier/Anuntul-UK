@@ -277,14 +277,18 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 imagesData = [[NSMutableArray alloc] init];
             }
             numberOfImages = [self.republishedAnnouncement[@"images"] count];
+            [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
             if (numberOfImages == 1) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
                 } else {
                     numberOfImages--;
                 }
+                });
             } else if (numberOfImages == 2) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
@@ -297,7 +301,9 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 } else {
                     numberOfImages--;
                 }
+                });
             } else if (numberOfImages == 3) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
@@ -316,7 +322,9 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 } else {
                     numberOfImages--;
                 }
+                });
             } else if (numberOfImages == 4) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
@@ -341,8 +349,10 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 } else {
                     numberOfImages--;
                 }
+                });
             } else if (numberOfImages == 5) {
                 
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
@@ -373,46 +383,50 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 } else {
                     numberOfImages--;
                 }
+                });
             } else if (numberOfImages == 6) {
-                
-                NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
-                if (img1) {
-                    [imagesData addObject:img1];
-                } else {
-                    numberOfImages--;
-                }
-                NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
-                if (img2) {
-                    [imagesData addObject:img2];
-                } else {
-                    numberOfImages--;
-                }
-                NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
-                if (img3) {
-                    [imagesData addObject:img3];
-                } else {
-                    numberOfImages--;
-                }
-                NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
-                if (img4) {
-                    [imagesData addObject:img4];
-                } else {
-                    numberOfImages--;
-                }
-                NSData *img5 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
-                if (img5) {
-                    [imagesData addObject:img5];
-                } else {
-                    numberOfImages--;
-                }
-                NSData *img6 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
-                if (img6) {
-                    [imagesData addObject:img6];
-                } else {
-                    numberOfImages--;
-                }
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
+                    if (img1) {
+                        [imagesData addObject:img1];
+                    } else {
+                        numberOfImages--;
+                    }
+                    NSData *img2 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][1] objectForKey:@"img"] objectForKey:@"url"]]];
+                    if (img2) {
+                        [imagesData addObject:img2];
+                    } else {
+                        numberOfImages--;
+                    }
+                    NSData *img3 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][2] objectForKey:@"img"] objectForKey:@"url"]]];
+                    if (img3) {
+                        [imagesData addObject:img3];
+                    } else {
+                        numberOfImages--;
+                    }
+                    NSData *img4 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][3] objectForKey:@"img"] objectForKey:@"url"]]];
+                    if (img4) {
+                        [imagesData addObject:img4];
+                    } else {
+                        numberOfImages--;
+                    }
+                    NSData *img5 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][4] objectForKey:@"img"] objectForKey:@"url"]]];
+                    if (img5) {
+                        [imagesData addObject:img5];
+                    } else {
+                        numberOfImages--;
+                    }
+                    NSData *img6 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][5] objectForKey:@"img"] objectForKey:@"url"]]];
+                    if (img6) {
+                        [imagesData addObject:img6];
+                    } else {
+                        numberOfImages--;
+                    }
+                    
+                });
             } else if (numberOfImages == 7) {
                 
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
@@ -455,8 +469,10 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 } else {
                     numberOfImages--;
                 }
+                });
             } else if (numberOfImages == 8) {
                 
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *img1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[self.republishedAnnouncement[@"images"][0] objectForKey:@"img"] objectForKey:@"url"]]];
                 if (img1) {
                     [imagesData addObject:img1];
@@ -505,7 +521,9 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 } else {
                     numberOfImages--;
                 }
+                });
             }
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
             if (numberOfImages == 0) {
                 self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
                 self.imageView1.image = [UIImage imageNamed:@"add_image"];
@@ -1480,12 +1498,14 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
         case 1:
             if (tapGesture.view.tag == 111) {
                 NSLog(@"DELETE IMAGE");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];
@@ -1499,13 +1519,16 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
         case 2:
             if (tapGesture.view.tag == 111) {
                 NSLog(@"DELETE FIRST");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
+                }
             } else if (tapGesture.view.tag == 222) {
+                if ([imagesData count] == numberOfImages) {
                 NSLog(@"DELETE SECOND");
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:1];
@@ -1513,7 +1536,7 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];
@@ -1527,31 +1550,34 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
         case 3:
             if (tapGesture.view.tag == 111) {
                 NSLog(@"DELETE FIRST");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 222) {
                 NSLog(@"DELETE SECOND");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:1];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 333) {
                 NSLog(@"DELETE THIRD");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:2];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];
@@ -1564,40 +1590,44 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
             break;
         case 4:
             if (tapGesture.view.tag == 111) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 222) {
                 NSLog(@"DELETE SECOND");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:1];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 333) {
                 NSLog(@"DELETE THIRD");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:2];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 444) {
                 NSLog(@"DELETE FOURTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:3];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];
@@ -1612,13 +1642,16 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
             break;
         case 5:
             if (tapGesture.view.tag == 111) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
+                }
             } else if (tapGesture.view.tag == 222) {
+                if ([imagesData count] == numberOfImages) {
             NSLog(@"DELETE SECOND");
             PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
             pictureViewController.imageData = [imagesData objectAtIndex:1];
@@ -1626,34 +1659,37 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
             pictureViewController.tag = tapGesture.view.tag;
             pictureViewController.delegate = self;
             [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-            
+                }
         } else if (tapGesture.view.tag == 333) {
             NSLog(@"DELETE THIRD");
+            if ([imagesData count] == numberOfImages) {
             PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
             pictureViewController.imageData = [imagesData objectAtIndex:2];
             pictureViewController.numberOfImages = numberOfImages;
             pictureViewController.tag = tapGesture.view.tag;
             pictureViewController.delegate = self;
             [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-           
+            }
         } else if (tapGesture.view.tag == 444) {
             NSLog(@"DELETE FOURTH");
+            if ([imagesData count] == numberOfImages) {
             PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
             pictureViewController.imageData = [imagesData objectAtIndex:3];
             pictureViewController.numberOfImages = numberOfImages;
             pictureViewController.tag = tapGesture.view.tag;
             pictureViewController.delegate = self;
             [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-            
+            }
         } else if (tapGesture.view.tag == 555) {
             NSLog(@"DELETE FIFTH");
+            if ([imagesData count] == numberOfImages) {
             PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
             pictureViewController.imageData = [imagesData objectAtIndex:4];
             pictureViewController.numberOfImages = numberOfImages;
             pictureViewController.tag = tapGesture.view.tag;
             pictureViewController.delegate = self;
             [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-            
+            }
         } else {
             if (!photoManager) {
                 photoManager = [[PhotoManager alloc] init];
@@ -1666,58 +1702,64 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
             break;
         case 6:
             if (tapGesture.view.tag == 111) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 222) {
                 NSLog(@"DELETE SECOND");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:1];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 333) {
                 NSLog(@"DELETE THIRD");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:2];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 444) {
                 NSLog(@"DELETE FOURTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:3];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 555) {
                 NSLog(@"DELETE FIFTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:4];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 666) {
                 NSLog(@"DELETE SIXTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:5];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];
@@ -1730,14 +1772,16 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
             break;
         case 7:
             if (tapGesture.view.tag == 111) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 222) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:1];
                 pictureViewController.numberOfImages = numberOfImages;
@@ -1745,52 +1789,57 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
                 NSLog(@"DELETE SECOND");
-                
+                }
             } else if (tapGesture.view.tag == 333) {
                 NSLog(@"DELETE THIRD");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:2];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 444) {
                 NSLog(@"DELETE FOURTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:3];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 555) {
                 NSLog(@"DELETE FIFTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:4];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 666) {
                 NSLog(@"DELETE SIXTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:5];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else if (tapGesture.view.tag == 777) {
                 NSLog(@"DELETE SEVENTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:6];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];
@@ -1803,15 +1852,17 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
             break;
         case 8:
             if (tapGesture.view.tag == 111) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:0];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
 //                [self.imageView9 removeFromSuperview];
             } else if (tapGesture.view.tag == 222) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:1];
                 pictureViewController.numberOfImages = numberOfImages;
@@ -1819,9 +1870,10 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
                 NSLog(@"DELETE SECOND");
-                
+                }
 //                [self.imageView8 removeFromSuperview];
             } else if (tapGesture.view.tag == 333) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:2];
                 pictureViewController.numberOfImages = numberOfImages;
@@ -1829,56 +1881,61 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
                 NSLog(@"DELETE THIRD");
-                
+                }
 //                [self.imageView8 removeFromSuperview];
             } else if (tapGesture.view.tag == 444) {
                 NSLog(@"DELETE FOURTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:3];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
 //                [self.imageView8 removeFromSuperview];
             } else if (tapGesture.view.tag == 555) {
                 NSLog(@"DELETE FIFTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:4];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
 //                [self.imageView8 removeFromSuperview];
             } else if (tapGesture.view.tag == 666) {
                 NSLog(@"DELETE SIXTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:5];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
 //                [self.imageView8 removeFromSuperview];
             } else if (tapGesture.view.tag == 777) {
                 NSLog(@"DELETE SEVENTH");
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:6];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
 //                [self.imageView8 removeFromSuperview];
             } else if (tapGesture.view.tag == 888) {
+                if ([imagesData count] == numberOfImages) {
                 PictureViewController *pictureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PictureViewControllerIdentifier"];
                 pictureViewController.imageData = [imagesData objectAtIndex:7];
                 pictureViewController.numberOfImages = numberOfImages;
                 pictureViewController.tag = tapGesture.view.tag;
                 pictureViewController.delegate = self;
                 [self.navigationController presentViewController:pictureViewController animated:YES completion:nil];
-                
+                }
             } else {
                 if (!photoManager) {
                     photoManager = [[PhotoManager alloc] init];

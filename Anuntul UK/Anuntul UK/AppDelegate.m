@@ -7,12 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "PayPalMobile.h"
+//#import "PayPalMobile.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "WebServiceManager.h"
 #import "MBProgressHUD.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "BraintreeCore.h"
 
 //production AS1nkHxy01JbjgonQPcd62yTDmvwO6NltjD1dXHoTj4HNn9xj_-5R6mDiYh-o_hxC_K8mpue3OxSlfHZ
 //sandbox  AcI2pGST8o8b4e7nQH6bQw59bSTheq5nQqZS1MYl59FJLtdSrU497BkSp-Gsb68l_nSAepVBz_doG_p_
@@ -29,10 +30,10 @@
     
     
     [Fabric with:@[[Crashlytics class]]];
-    
+        [BTAppSwitch setReturnURLScheme:@"uk.anuntul.uk.payments"];
 //    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"AVIYNTMpy8GUd5WYziceXD5RmKwUCD7zRkbftNBBAc3xeOPYUGyJe3msUfIcVCBNJ1G0_MP6uqTKSOj-",
 //                                                           PayPalEnvironmentSandbox : @"ATuC9q6N96XMU6ZLtWVJ2VaM1jsHXg4nGGrMcPS6gzGcztyICCA9cJjlc4GyFBK_7hKXmKPwZSn2bm-m"}];
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction:@"AS1nkHxy01JbjgonQPcd62yTDmvwO6NltjD1dXHoTj4HNn9xj_-5R6mDiYh-o_hxC_K8mpue3OxSlfHZ", PayPalEnvironmentSandbox:@"AcI2pGST8o8b4e7nQH6bQw59bSTheq5nQqZS1MYl59FJLtdSrU497BkSp-Gsb68l_nSAepVBz_doG_p_"}];
+//    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction:@"AS1nkHxy01JbjgonQPcd62yTDmvwO6NltjD1dXHoTj4HNn9xj_-5R6mDiYh-o_hxC_K8mpue3OxSlfHZ", PayPalEnvironmentSandbox:@"AcI2pGST8o8b4e7nQH6bQw59bSTheq5nQqZS1MYl59FJLtdSrU497BkSp-Gsb68l_nSAepVBz_doG_p_"}];
     //for testing, both should be on production ^^
     
 //    [PayPalMobile initializeWithClientIdsForEnvironments:<#(nonnull NSDictionary *)#>]
@@ -63,6 +64,9 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    if ([url.scheme localizedCaseInsensitiveCompare:@"uk.anuntul.uk.payments"] == NSOrderedSame) {
+        return [BTAppSwitch handleOpenURL:url sourceApplication:sourceApplication];
+    }
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication

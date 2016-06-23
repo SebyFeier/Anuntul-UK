@@ -139,4 +139,12 @@ typedef void(^ArrayAndErrorCompletionBlock)(NSArray *array, NSError *error);
 - (void)resetPasswordForEmail:(NSString *)email
           withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
 
+- (void)sendPaymentInformationToServer:(NSString *)nonce
+                               type:(NSString *)type
+                        announcementId:(NSString *)announcementId
+                      announcementType:(NSString *)announcementType
+                   withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
+- (void)getClientTokenwithCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
 @end

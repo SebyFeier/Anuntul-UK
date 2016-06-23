@@ -495,6 +495,25 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
 
 }
 
+- (void)getClientTokenwithCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    NSString *urlString = [NSString stringWithFormat:@"client_token"];
+    NSURL *url = [NSURL URLWithString:WebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+                                                            path:urlString
+                                                      parameters:nil];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
+}
+
 - (void)editUserWithId:(NSString *)userId username:(NSString *)name andPassword:(NSString *)password withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
     NSString *urlString = @"user/edit";
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
@@ -623,6 +642,27 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
     }];
     [operation start];
 
+}
+
+- (void)sendPaymentInformationToServer:(NSString *)nonce type:(NSString *)type announcementId:(NSString *)announcementId announcementType:(NSString *)announcementType withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    NSString *urlString = @"announcement/processing_braintree";
+    NSURL *url = [NSURL URLWithString:WebServiceUrl];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:nonce,@"payment_method_nonce",type,@"payment_type",announcementId,@"id_anunt", announcementType, @"setari_anunturi_id", nil];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+                                                            path:urlString
+                                                      parameters:parameters];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        self.userInfo = JSON;
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
 }
 
 - (NSString *)getIPAddress {
