@@ -64,6 +64,8 @@
         
         self.navigationItem.leftBarButtonItem = leftBarButtonItem1;
 
+    } else {
+        self.navigationItem.hidesBackButton = YES;
     }
 
 }

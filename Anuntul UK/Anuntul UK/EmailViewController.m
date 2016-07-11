@@ -167,7 +167,7 @@
                         [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
                         if (!error) {
                             if ([dictionary[@"success"] boolValue]) {
-                                [[[UIAlertView alloc] initWithTitle:@"" message:@"E-mailul a fost trimis" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                [[[UIAlertView alloc] initWithTitle:@"" message:@"Mesajul dumneavoastra a fost trimis." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
                         } else {
@@ -209,7 +209,7 @@
                         [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
                         if (!error) {
                             if ([dictionary[@"success"] boolValue]) {
-                                [[[UIAlertView alloc] initWithTitle:@"" message:@"Veți fi contactat in curand" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                [[[UIAlertView alloc] initWithTitle:@"" message:@"Mesajul dumneavoastra a fost trimis. Multumim." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
                         } else {

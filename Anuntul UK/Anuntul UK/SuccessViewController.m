@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "WebServiceManager.h"
 #import "LocationAdsViewController.h"
+#import "AnnouncementTypesViewController.h"
 
 @interface SuccessViewController() {
     
@@ -26,7 +27,11 @@
 }
 - (IBAction)addNewAnnouncement:(id)sender {
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    AnnouncementTypesViewController *announcementTypes = [self.storyboard instantiateViewControllerWithIdentifier:@"AnnouncementTypesViewControllerIdentifier"];
+    announcementTypes.republishedAnnouncement = nil;
+    [self.navigationController pushViewController:announcementTypes animated:YES];
+
 }
 - (IBAction)goToMyAnnouncements:(id)sender {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

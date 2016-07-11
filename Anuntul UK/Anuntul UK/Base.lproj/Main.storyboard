@@ -1213,7 +1213,7 @@
                                             <action selector="registerButtonTapped:" destination="gld-Um-k2i" eventType="touchUpInside" id="MZY-ow-3gd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwX-Zw-RO3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul de UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwX-Zw-RO3">
                                         <rect key="frame" x="20" y="286" width="556" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="fU3-uf-Xsh"/>
@@ -1356,7 +1356,7 @@
                                                     <action selector="logoutButtonTapped:" destination="gld-Um-k2i" eventType="touchUpInside" id="afC-HC-kHz"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6I-sQ-sdS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul de UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6I-sQ-sdS">
                                                 <rect key="frame" x="23" y="406" width="526" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="SNa-L9-tWk"/>
@@ -1743,7 +1743,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfb-q2-SaD">
                                         <rect key="frame" x="543" y="251" width="51" height="31"/>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBW-Nt-yfY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul de UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBW-Nt-yfY">
                                         <rect key="frame" x="20" y="474" width="560" height="88"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="pol-Yd-DC3"/>
@@ -1807,7 +1807,7 @@
                                             <action selector="forgotResetPasswordButtonTapped:" destination="92g-Lh-XJe" eventType="touchUpInside" id="LRf-xM-6nC"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjW-AM-4Kl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Anuntul de UK®" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjW-AM-4Kl">
                                         <rect key="frame" x="20" y="466" width="560" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="96" id="2kw-ra-XUX"/>

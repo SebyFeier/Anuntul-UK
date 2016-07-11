@@ -263,11 +263,11 @@ NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
 
 }
 
-- (void)createAnnouncementWithCategoryId:(NSString *)categoryId userId:(NSString *)userId locationId:(NSString *)locationId announcementType:(NSString *)announcementType title:(NSString *)title description:(NSString *)description phoneNumber:(NSString *)phoneNumber images:(NSArray *)images withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+- (void)createAnnouncementWithCategoryId:(NSString *)categoryId userId:(NSString *)userId locationId:(NSString *)locationId announcementType:(NSString *)announcementType title:(NSString *)title description:(NSString *)description phoneNumber:(NSString *)phoneNumber images:(NSArray *)images oldAnnouncementId:(NSString *)oldAnnouncementId isRepublished:(NSNumber *)isRepublished withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
     NSString *urlString = @"announcement/create";
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
     NSString *ipAddress = [self getIPAddress];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:categoryId,@"id_categ",userId,@"id_user",locationId,@"id_locatie",announcementType,@"setari_anunturi_id",title,@"titlu",description,@"descriere",phoneNumber,@"telefon1", images,@"images",ipAddress,@"ip", nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:categoryId,@"id_categ",userId,@"id_user",locationId,@"id_locatie",announcementType,@"setari_anunturi_id",title,@"titlu",description,@"descriere",phoneNumber,@"telefon1", images,@"images",ipAddress,@"ip",oldAnnouncementId,@"old_announcement_id",isRepublished,@"is_republished", nil];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setStringEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"

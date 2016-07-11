@@ -1,4 +1,4 @@
-//
+ //
 //  AdsDetailsViewController.h
 //  Anuntul de UK
 //
@@ -17,5 +17,6 @@
 @property (nonatomic, assign) BOOL toPublish;
 //@property (nonatomic, strong) PayPalPayment *paypalPayment;
 @property (nonatomic, assign) NSDictionary *republishedAnnouncement;
+@property (nonatomic, strong) NSDictionary *republishedInfo;
 
 @end

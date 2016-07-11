@@ -84,6 +84,8 @@ typedef void(^ArrayAndErrorCompletionBlock)(NSArray *array, NSError *error);
                              description:(NSString *)description
                              phoneNumber:(NSString *)phoneNumber
                                   images:(NSArray *)images
+                       oldAnnouncementId:(NSString *)oldAnnouncementId
+                           isRepublished:(NSNumber *)isRepublished
                      withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
 
 - (void)getWaitingAnnouncementsForUser:(NSString *)userId
