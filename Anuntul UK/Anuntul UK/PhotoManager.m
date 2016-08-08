@@ -114,8 +114,8 @@
             // we are performing these operations on a background thread
             // because we must perform a few operations on the image
             
-    [self performSelectorOnMainThread:@selector(showHudWithText:) withObject:@"Se salveaza imaginea" waitUntilDone:YES];
-    [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+//    [self performSelectorOnMainThread:@selector(showHudWithText:) withObject:@"Se salveaza imaginea" waitUntilDone:YES];
+//    [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
     [self performSelectorInBackground:@selector(processInfoForImagePickingWithInfo:) withObject:info];
 }
 - (void)showHudWithText:(NSString *)text {
@@ -161,7 +161,7 @@
         NSDictionary *info = @{@"fileLocation": fileName};
         
 //        info = [self addCoordinateInfoToItem:info];
-        [self performSelectorOnMainThread:@selector(removeHud) withObject:nil waitUntilDone:YES];
+//        [self performSelectorOnMainThread:@selector(removeHud) withObject:nil waitUntilDone:YES];
         if ([_delegate respondsToSelector:@selector(photoManager:didFinishSelectingPhotoWithInfo:)]) {
             [_delegate photoManager:self didFinishSelectingPhotoWithInfo:info];
         } }
@@ -169,7 +169,7 @@
         [_delegate photoManager:self didFailWithError:nil];
     }
     
-    [self removeHud];
+//    [self removeHud];
     
 }
 

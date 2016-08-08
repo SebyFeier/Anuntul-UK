@@ -52,12 +52,12 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "489596728.18142"
+                  timestampString = "492177501.496702"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "344"
                   endingLineNumber = "344"
-                  offsetFromSymbolStart = "304">
+                  offsetFromSymbolStart = "252">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "489596728.181632"
+                  timestampString = "492177501.496886"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "344"
                   endingLineNumber = "344"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "19">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -115,22 +115,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Anuntul UK/AnnouncementTypesViewController.m"
-            timestampString = "489595945.767675"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Anuntul UK/AdsDetailsViewController.m"
             timestampString = "489596034.795481"
             startingColumnNumber = "9223372036854775807"
@@ -148,12 +132,12 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "489596728.184753"
+                  timestampString = "492177501.499557"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "242"
                   endingLineNumber = "242"
-                  offsetFromSymbolStart = "276">
+                  offsetFromSymbolStart = "236">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -163,12 +147,12 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "489596728.184887"
+                  timestampString = "492177501.499729"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "243"
                   endingLineNumber = "243"
-                  offsetFromSymbolStart = "108">
+                  offsetFromSymbolStart = "78">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -228,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anuntul UK/CreateAnnouncementViewController.m"
-            timestampString = "489596556.130088"
+            timestampString = "492177345.505177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2250"
-            endingLineNumber = "2250"
+            startingLineNumber = "2253"
+            endingLineNumber = "2253"
             landmarkName = "-visualizeButtonTapped:"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,12 +228,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anuntul UK/CreateAnnouncementViewController.m"
-            timestampString = "489596561.974079"
+            timestampString = "492177345.505177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2280"
-            endingLineNumber = "2280"
+            startingLineNumber = "2283"
+            endingLineNumber = "2283"
             landmarkName = "-visualizeButtonTapped:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/CreateAnnouncementViewController.m"
+            timestampString = "492177345.505177"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2020"
+            endingLineNumber = "2020"
+            landmarkName = "-uploadedFinished:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/CreateAnnouncementViewController.m"
+            timestampString = "492177345.505177"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2008"
+            endingLineNumber = "2008"
+            landmarkName = "-uploadFileFromLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/CreateAnnouncementViewController.m"
+            timestampString = "492177345.505177"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2005"
+            endingLineNumber = "2005"
+            landmarkName = "-uploadFileFromLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/CreateAnnouncementViewController.m"
+            timestampString = "492177275.39409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1990"
+            endingLineNumber = "1990"
+            landmarkName = "-uploadFileFromLocation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

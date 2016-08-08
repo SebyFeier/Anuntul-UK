@@ -1986,7 +1986,8 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
 //        NSString *strImageData = [finalImagePath stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
 
         //        imageData = fileData;
-        [self showHudWithText:@"Se salvează imaginea"];
+//        [self showHudWithText:@"Se salvează imaginea"];
+    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
         //        NSURL *url = [NSURL URLWithString:@"http://api.brmbnavigator.com"];
         NSURL *url = [NSURL URLWithString:WebServiceUrlPhoto];
         AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
@@ -2002,8 +2003,10 @@ NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
         }];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self uploadedFinished:responseObject];
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [self uploadFinishedWithError:error];
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
         }];
         [operation start];
 //    } else {

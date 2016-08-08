@@ -14,7 +14,8 @@
 
 #define kTWebServiceForEndpoint(endpoint) [WebServiceUrl stringByAppendingPathComponent:endpoint]
 
-NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
+//NSString *const WebServiceUrl = @"http://anuntul.boxnets.com";
+NSString *const WebServiceUrl = @"http://api.anuntul.co.uk";
 
 @implementation WebServiceManager
 
