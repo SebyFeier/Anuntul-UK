@@ -548,7 +548,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 
 - (void)shareButtonTapped:(id)sender {
     NSString *textToShare = @"";
-    NSURL *myWebsite = [NSURL URLWithString:[NSString stringWithFormat:@"https://anuntul.co.uk/%@.html",self.adDetails[@"permalink"]]];
+    NSURL *myWebsite = [NSURL URLWithString:[NSString stringWithFormat:@"https://anuntul.co.uk/%@-%@.html",self.adDetails[@"permalink"], self.adDetails[@"id_anunt"]]];
     
     NSArray *objectsToShare = @[textToShare, myWebsite];
     
@@ -717,6 +717,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     if (!self.descriptionLabel) {
         self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.descriptionLabel.textAlignment = NSTextAlignmentJustified;
+        
         [self.scrollView addSubview:self.descriptionLabel];
     }
 //    self.descriptionLabel.text = self.adDetails[@"descriere"];
@@ -775,7 +776,11 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
         self.adIdLabel.font = [UIFont systemFontOfSize:15];
         [self.scrollView addSubview:self.adIdLabel];
     }
-    self.adIdLabel.text = [NSString stringWithFormat:@"ID %@",self.adDetails[@"id_anunt"]];
+    if (self.adDetails[@"id_anunt"]) {
+        self.adIdLabel.text = [NSString stringWithFormat:@"ID %@",self.adDetails[@"id_anunt"]];
+    } else {
+        self.adIdLabel.text = @"";
+    }
     
     if (!self.reportButton) {
         self.reportButton = [[UIButton alloc] initWithFrame:CGRectZero];
@@ -831,54 +836,6 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     [self.phoneNumberButton setTitle:@"Telefon" forState:UIControlStateNormal];
     
     self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.titleLabel.frame) + CGRectGetHeight(self.descriptionLabel.frame) + CGRectGetHeight(self.emailButton.frame) + CGRectGetHeight(self.phoneNumberButton.frame) + 100);
-    
-//    if ([self.adDetails[@"images"] count] == 0) {
-//        self.imageView1 = nil;
-//        self.imageView2 = nil;
-//        self.imageView3 = nil;
-//    } else if ([self.adDetails[@"images"] count] == 1) {
-//        self.imageView1 = nil;
-//        self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.imageView2.image = [UIImage imageNamed:@"no-image"];
-//        self.imageView3 = nil;
-//        UITapGestureRecognizer *imageGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImages:)];
-//        [self.imageView2 addGestureRecognizer:imageGesture2];
-//        self.imageView2.userInteractionEnabled = YES;
-//        [self.scrollView addSubview:self.imageView2];
-//    } else if ([self.adDetails[@"images"] count] == 2) {
-//        self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.imageView1.image = [UIImage imageNamed:@"no-image"];
-//        self.imageView2.image = [UIImage imageNamed:@"no-image"];
-//        self.imageView3 = nil;
-//        UITapGestureRecognizer *imageGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImages:)];
-//        [self.imageView1 addGestureRecognizer:imageGesture1];
-//        UITapGestureRecognizer *imageGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImages:)];
-//        [self.imageView2 addGestureRecognizer:imageGesture2];
-//        self.imageView1.userInteractionEnabled = YES;
-//        self.imageView2.userInteractionEnabled = YES;
-//        [self.scrollView addSubview:self.imageView1];
-//        [self.scrollView addSubview:self.imageView2];
-//    } else if ([self.adDetails[@"images"] count] >= 3) {
-//        self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.imageView3 = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.imageView1.image = [UIImage imageNamed:@"no-image"];
-//        self.imageView2.image = [UIImage imageNamed:@"no-image"];
-//        self.imageView3.image = [UIImage imageNamed:@"no-image"];
-//        UITapGestureRecognizer *imageGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImages:)];
-//        [self.imageView1 addGestureRecognizer:imageGesture1];
-//        UITapGestureRecognizer *imageGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImages:)];
-//        [self.imageView2 addGestureRecognizer:imageGesture2];
-//        UITapGestureRecognizer *imageGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImages:)];
-//        [self.imageView3 addGestureRecognizer:imageGesture3];
-//        self.imageView1.userInteractionEnabled = YES;
-//        self.imageView2.userInteractionEnabled = YES;
-//        self.imageView3.userInteractionEnabled = YES;
-//        [self.scrollView addSubview:self.imageView1];
-//        [self.scrollView addSubview:self.imageView2];
-//        [self.scrollView addSubview:self.imageView3];
-//    }
     
     if (self.toPublish) {
         self.publishButton = [[UIButton alloc] initWithFrame:CGRectZero];

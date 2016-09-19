@@ -52,7 +52,7 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "492177501.496702"
+                  timestampString = "495990446.330049"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "344"
@@ -67,7 +67,7 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "492177501.496886"
+                  timestampString = "495990446.330222"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "344"
@@ -84,12 +84,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anuntul UK/AdsDetailsViewController.m"
-            timestampString = "489594710.181089"
+            timestampString = "495819074.721815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1002"
-            endingLineNumber = "1002"
-            landmarkName = "-phoneNumberTapped:"
+            startingLineNumber = "975"
+            endingLineNumber = "975"
+            landmarkName = "-mailComposeController:didFinishWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -132,7 +132,7 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "492177501.499557"
+                  timestampString = "495990446.33237"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "242"
@@ -147,7 +147,7 @@
                   moduleName = "Anuntul UK"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/Anuntul%20UK/Anuntul%20UK/Anuntul%20UK/AdsDetailsViewController.m"
-                  timestampString = "492177501.499729"
+                  timestampString = "495990446.332547"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "243"
@@ -298,6 +298,38 @@
             startingLineNumber = "1990"
             endingLineNumber = "1990"
             landmarkName = "-uploadFileFromLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/AdsDetailsViewController.m"
+            timestampString = "495819074.721815"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Anuntul UK/AdsDetailsViewController.m"
+            timestampString = "495818198.12163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "551"
+            endingLineNumber = "551"
+            landmarkName = "-shareButtonTapped:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

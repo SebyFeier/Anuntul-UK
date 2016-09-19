@@ -20,8 +20,8 @@
 #import "PictureViewController.h"
 #import "Haneke.h"
 
-NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
-
+//NSString *const WebServiceUrlPhoto = @"http://anuntul.boxnets.com";
+NSString *const WebServiceUrlPhoto = @"http://api.anuntul.co.uk";
 
 @interface CreateAnnouncementViewController()<UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, PhotoManagerDelegate, SelectionDelegate, DeletePictureDelegate> {
     
