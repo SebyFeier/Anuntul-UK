@@ -30,8 +30,8 @@
     NSDictionary *newAnnouncement;
     BOOL isPhoneNumberVisible;
 }
-@property (strong, nonatomic)  UILabel *titleLabel;
-@property (strong, nonatomic)  UILabel *descriptionLabel;
+@property (strong, nonatomic)  UITextView *titleLabel;
+@property (strong, nonatomic)  UITextView *descriptionLabel;
 @property (strong, nonatomic)  UIButton *emailButton;
 @property (strong, nonatomic)  UIButton *phoneNumberButton;
 @property (strong, nonatomic)  UILabel *viewsLabel;
@@ -42,7 +42,7 @@
 //@property (strong, nonatomic)  UIImageView *imageView3;
 @property (strong, nonatomic)  UIImageView *separator1;
 @property (strong, nonatomic)  UIImageView *separator2;
-@property (strong, nonatomic)  UILabel *adIdLabel;
+@property (strong, nonatomic)  UITextView *adIdLabel;
 @property (strong, nonatomic)  UIButton *reportButton;
 @property (strong, nonatomic)  UILabel *userLabel;
 @property (strong, nonatomic)  UILabel *registeredLabel;
@@ -64,17 +64,17 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
-
-//    if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
-//        flowLayout.itemSize = CGSizeMake(170.f, 170.f);
-//    } else {
-//        flowLayout.itemSize = CGSizeMake(192.f, 192.f);
-//    }
+    
+    //    if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
+    //        flowLayout.itemSize = CGSizeMake(170.f, 170.f);
+    //    } else {
+    //        flowLayout.itemSize = CGSizeMake(192.f, 192.f);
+    //    }
     flowLayout.itemSize = self.collectionView.frame.size;
     [self.collectionView scrollsToTop];
     
     [flowLayout invalidateLayout];
-//    [self.collectionView reloadData];
+    //    [self.collectionView reloadData];
     self.scrollView.frame = self.view.bounds;
     self.titleLabel.frame = CGRectMake(10, 64, CGRectGetWidth(self.scrollView.frame) - 20, 0);
     
@@ -123,16 +123,16 @@
     } else {
         self.buttonsView.frame = CGRectMake(10, CGRectGetMaxY(self.separator2.frame), CGRectGetWidth(self.scrollView.frame) - 20, 54);
     }
-
+    
     UIColor *color = [UIColor hx_colorWithHexString:@"929292"];
     
-        [self.buttonsView addTopBorderWithHeight:1 andColor:color];
-//    [self.buttonsView addLeftBorderWithWidth:1 andColor:color];
-//    [self.buttonsView addRightBorderWithWidth:1 andColor:color];
-//    [self.buttonsView addBottomBorderWithHeight:1 andColor:color];
+    [self.buttonsView addTopBorderWithHeight:1 andColor:color];
+    //    [self.buttonsView addLeftBorderWithWidth:1 andColor:color];
+    //    [self.buttonsView addRightBorderWithWidth:1 andColor:color];
+    //    [self.buttonsView addBottomBorderWithHeight:1 andColor:color];
     
     if (self.emailButton) {
-//        self.emailButton.frame = CGRectMake(20,  CGRectGetMaxY(self.separator2.frame) + 10, CGRectGetWidth(self.scrollView.frame) / 2 - 40, 44);
+        //        self.emailButton.frame = CGRectMake(20,  CGRectGetMaxY(self.separator2.frame) + 10, CGRectGetWidth(self.scrollView.frame) / 2 - 40, 44);
         self.phoneNumberButton.frame = CGRectMake(0, 5, CGRectGetWidth(self.buttonsView.frame) / 2 - 5, 42);
     } else {
         self.phoneNumberButton.frame = CGRectMake(0, 5, CGRectGetWidth(self.buttonsView.frame), 42);
@@ -176,10 +176,10 @@
         self.publishButton.frame = CGRectMake(10, CGRectGetMaxY(self.buttonsView.frame), CGRectGetWidth(self.scrollView.frame) - 20, 42);
     }
     
-
     
     
-   
+    
+    
     
     self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.titleLabel.frame) + CGRectGetHeight(self.viewsLabel.frame) + CGRectGetHeight(self.descriptionLabel.frame) + CGRectGetHeight(self.separator1.frame) + CGRectGetHeight(self.adIdLabel.frame) + CGRectGetHeight(self.separator2.frame) + imageHeight + CGRectGetHeight(self.userImageView.frame) + CGRectGetHeight(self.publishButton.frame) + 154);
     
@@ -188,14 +188,14 @@
 - (void)updateTitle {
     
     CGRect titleFrame = self.titleLabel.frame;
-    float titleHeight = [self getHeightForText:self.titleLabel.text
-                                      withFont:self.titleLabel.font
-                                      andWidth:self.titleLabel.frame.size.width];
-    
+        float titleHeight = [self getHeightForText:self.titleLabel.text
+                                          withFont:self.titleLabel.font
+                                          andWidth:CGRectGetWidth(self.view.frame) - 20];
+
     self.titleLabel.frame = CGRectMake(titleFrame.origin.x,
                                        titleFrame.origin.y,
                                        titleFrame.size.width,
-                                       titleHeight);
+                                       titleHeight + 25);
     
 }
 
@@ -209,11 +209,11 @@
     self.descriptionLabel.frame = CGRectMake(descriptionFrame.origin.x,
                                              descriptionFrame.origin.y,
                                              descriptionFrame.size.width,
-                                             descriptionHeight);
+                                             descriptionHeight + 60);
 }
 
 - (NSString *)findStringInDescription:(NSString *)searchedString {
-//    NSString *searchedString = @"domain-name.tld.tld2";
+    //    NSString *searchedString = @"domain-name.tld.tld2";
     NSRange   searchedRange = NSMakeRange(0, [searchedString length]);
     NSString *pattern = @"<a href=\"tel:.*\">";
     NSError  *error = nil;
@@ -224,10 +224,10 @@
         NSString* matchText = [searchedString substringWithRange:[match range]];
         NSLog(@"match: %@", matchText);
         return matchText;
-//        NSRange group1 = [match rangeAtIndex:1];
-//        NSRange group2 = [match rangeAtIndex:2];
-//        NSLog(@"group1: %@", [searchedString substringWithRange:group1]);
-//        NSLog(@"group2: %@", [searchedString substringWithRange:group2]);
+        //        NSRange group1 = [match rangeAtIndex:1];
+        //        NSRange group2 = [match rangeAtIndex:2];
+        //        NSLog(@"group1: %@", [searchedString substringWithRange:group1]);
+        //        NSLog(@"group2: %@", [searchedString substringWithRange:group2]);
     }
     return nil;
 }
@@ -244,26 +244,26 @@
         if (!error) {
             if ([dictionary[@"success"] boolValue]) {
                 if ([self.announcementInfo[@"setari_anunturi_id"] integerValue] == 2) {
-//                    if (!self.toPublish) {
-                        self.tabBarController.tabBar.hidden = NO;
-//                    }
-//                    [self.navigationController popToRootViewControllerAnimated:YES];
-//                    if (self.republishedAnnouncement) {
-//                        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-//                        [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-//                            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-//                            if ([dictionary[@"success"] boolValue]) {
-//                                //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
-//                                //                            [self.tableView reloadData];
-//                                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-//                                [self.navigationController pushViewController:successViewController animated:YES];
-//                                
-//                            }
-//                        }];
-//                    } else {
+                    //                    if (!self.toPublish) {
+                    self.tabBarController.tabBar.hidden = NO;
+                    //                    }
+                    //                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    //                    if (self.republishedAnnouncement) {
+                    //                        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+                    //                        [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                    //                            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+                    //                            if ([dictionary[@"success"] boolValue]) {
+                    //                                //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
+                    //                                //                            [self.tableView reloadData];
+                    //                                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+                    //                                [self.navigationController pushViewController:successViewController animated:YES];
+                    //
+                    //                            }
+                    //                        }];
+                    //                    } else {
                     SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
                     [self.navigationController pushViewController:successViewController animated:YES];
-//                    }
+                    //                    }
                 } else {
                     newAnnouncement = dictionary;
                     
@@ -283,44 +283,44 @@
                     UINavigationController *navigationController = [[UINavigationController alloc]
                                                                     initWithRootViewController:dropInViewController];
                     [self presentViewController:navigationController animated:YES completion:nil];
-//                    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-//                    _paypalConfig = [[PayPalConfiguration alloc] init];
-//                    _paypalConfig.acceptCreditCards = YES;
-//                    _paypalConfig.merchantName = @"Anunțul de UK";
-//                    _paypalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
-//                    _paypalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
-//                    
-//                    _paypalConfig.languageOrLocale = [NSLocale preferredLanguages][0];
-//                    
-//                    _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
-//                    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
-//                    
-//                    PayPalItem *item1 = [PayPalItem itemWithName:[NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]] withQuantity:1 withPrice:[NSDecimalNumber decimalNumberWithString:self.announcementType[@"amount"]] withCurrency:@"GBP" withSku:self.announcementInfo[@"titlu"]];
-//                    NSArray *items = @[item1];
-//                    NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
-//                    
-//                    // Optional: include payment details
-//                    NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0"];
-//                    NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithString:@"0"];
-//                    PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
-//                                                                                               withShipping:shipping
-//                                                                                                    withTax:tax];
-//                    
-//                    NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
-//                    
-//                    PayPalPayment *payment = [[PayPalPayment alloc] init];
-//                    payment.amount = total;
-//                    payment.currencyCode = @"GBP";
-//                    payment.shortDescription = [NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]];
-//                    payment.intent = PayPalPaymentIntentSale;
-//                    payment.items = items;  // if not including multiple items, then leave payment.items as nil
-//                    payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
-////                    _paypalConfig.acceptCreditCards = YES;
-//                    if (payment.processable) {
-//                        PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:_paypalConfig delegate:self];
-//                        [self presentViewController:paymentViewController animated:YES completion:nil];
-//                    }
-
+                    //                    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+                    //                    _paypalConfig = [[PayPalConfiguration alloc] init];
+                    //                    _paypalConfig.acceptCreditCards = YES;
+                    //                    _paypalConfig.merchantName = @"Anunțul de UK";
+                    //                    _paypalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
+                    //                    _paypalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
+                    //
+                    //                    _paypalConfig.languageOrLocale = [NSLocale preferredLanguages][0];
+                    //
+                    //                    _paypalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
+                    //                    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
+                    //
+                    //                    PayPalItem *item1 = [PayPalItem itemWithName:[NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]] withQuantity:1 withPrice:[NSDecimalNumber decimalNumberWithString:self.announcementType[@"amount"]] withCurrency:@"GBP" withSku:self.announcementInfo[@"titlu"]];
+                    //                    NSArray *items = @[item1];
+                    //                    NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
+                    //
+                    //                    // Optional: include payment details
+                    //                    NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0"];
+                    //                    NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithString:@"0"];
+                    //                    PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
+                    //                                                                                               withShipping:shipping
+                    //                                                                                                    withTax:tax];
+                    //
+                    //                    NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
+                    //
+                    //                    PayPalPayment *payment = [[PayPalPayment alloc] init];
+                    //                    payment.amount = total;
+                    //                    payment.currencyCode = @"GBP";
+                    //                    payment.shortDescription = [NSString stringWithFormat:@"%@",self.announcementType[@"titlu"]];
+                    //                    payment.intent = PayPalPaymentIntentSale;
+                    //                    payment.items = items;  // if not including multiple items, then leave payment.items as nil
+                    //                    payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
+                    ////                    _paypalConfig.acceptCreditCards = YES;
+                    //                    if (payment.processable) {
+                    //                        PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:_paypalConfig delegate:self];
+                    //                        [self presentViewController:paymentViewController animated:YES completion:nil];
+                    //                    }
+                    
                 }
             }
         } else {
@@ -338,51 +338,51 @@
 - (void)dropInViewController:(BTDropInViewController *)viewController
   didSucceedWithTokenization:(BTPaymentMethodNonce *)paymentMethodNonce {
     // Send payment method nonce to your server for processing
-//    [self postNonceToServer:paymentMethodNonce.nonce];
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    //    [self postNonceToServer:paymentMethodNonce.nonce];
+    //    [self dismissViewControllerAnimated:YES completion:nil];
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
     [[WebServiceManager sharedInstance] sendPaymentInformationToServer:paymentMethodNonce.nonce type:paymentMethodNonce.type announcementId:newAnnouncement[@"id_anunt"] announcementType:self.announcementInfo[@"setari_anunturi_id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-            [self dismissViewControllerAnimated:YES completion:^{
-                //        if (!self.toPublish) {
-                self.tabBarController.tabBar.hidden = NO;
-                //        }
-//                NSLog(@"%@",completedPayment.confirmation);
-                NSString *email = @"";
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                if ([userDefaults objectForKey:@"email"]) {
-                    email = [userDefaults objectForKey:@"email"];
-                } else if ([userDefaults objectForKey:@"facebookEmail"]) {
-                    email = [userDefaults objectForKey:@"facebookEmail"];
-                }
-                [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-                [[WebServiceManager sharedInstance] paymentPerformedByUserId:[NSString stringWithFormat:@"%@",self.announcementInfo[@"id_user"]] announcementId:[NSString stringWithFormat:@"%@",newAnnouncement[@"id_anunt"]] typeId:[NSString stringWithFormat:@"%@",self.announcementInfo[@"setari_anunturi_id"]] ammount:[NSString stringWithFormat:@"%@",self.announcementType[@"amount"]] currency:@"GBP" email:email details:@"" orderNumber:@"" withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                    [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-                    if (!error) {
-                        if ([dictionary[@"success"] boolValue]) {
-                        }
-                        //                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-                        //                [self.navigationController pushViewController:successViewController animated:YES];
-                        //                if (self.republishedAnnouncement) {
-                        //                [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-                        //                [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                        //                    [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-                        //                    if ([dictionary[@"success"] boolValue]) {
-                        //                        //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
-                        //                        //                            [self.tableView reloadData];
-                        //                        SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-                        //                        [self.navigationController pushViewController:successViewController animated:YES];
-                        //
-                        //                    }
-                        //                }];
-                        //                } else {
-                        SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-                        [self.navigationController pushViewController:successViewController animated:YES];
-                        
-                        //                }
+        [self dismissViewControllerAnimated:YES completion:^{
+            //        if (!self.toPublish) {
+            self.tabBarController.tabBar.hidden = NO;
+            //        }
+            //                NSLog(@"%@",completedPayment.confirmation);
+            NSString *email = @"";
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            if ([userDefaults objectForKey:@"email"]) {
+                email = [userDefaults objectForKey:@"email"];
+            } else if ([userDefaults objectForKey:@"facebookEmail"]) {
+                email = [userDefaults objectForKey:@"facebookEmail"];
+            }
+            [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+            [[WebServiceManager sharedInstance] paymentPerformedByUserId:[NSString stringWithFormat:@"%@",self.announcementInfo[@"id_user"]] announcementId:[NSString stringWithFormat:@"%@",newAnnouncement[@"id_anunt"]] typeId:[NSString stringWithFormat:@"%@",self.announcementInfo[@"setari_anunturi_id"]] ammount:[NSString stringWithFormat:@"%@",self.announcementType[@"amount"]] currency:@"GBP" email:email details:@"" orderNumber:@"" withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+                if (!error) {
+                    if ([dictionary[@"success"] boolValue]) {
                     }
-
-                }];
+                    //                SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+                    //                [self.navigationController pushViewController:successViewController animated:YES];
+                    //                if (self.republishedAnnouncement) {
+                    //                [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+                    //                [[WebServiceManager sharedInstance] destroyAnnouncementForAnnouncementId:self.republishedAnnouncement[@"id_anunt"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                    //                    [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+                    //                    if ([dictionary[@"success"] boolValue]) {
+                    //                        //                            [self.locationAds removeObjectAtIndex:_indexpath.row];
+                    //                        //                            [self.tableView reloadData];
+                    //                        SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+                    //                        [self.navigationController pushViewController:successViewController animated:YES];
+                    //
+                    //                    }
+                    //                }];
+                    //                } else {
+                    SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+                    [self.navigationController pushViewController:successViewController animated:YES];
+                    
+                    //                }
+                }
+                
+            }];
         }];
     }];
 }
@@ -438,22 +438,22 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 #pragma mark - Private methods
 
 - (void)showLoadingUI {
-//    ...
+    //    ...
 }
 
 - (void)hideLoadingUI:(NSNotification *)notification {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIApplicationDidBecomeActiveNotification
                                                   object:nil];
-//    ....
+    //    ....
 }
 
 //
 //- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
 //    NSLog(@"PayPal Payment Success!");
 //    //    self.resultText = [completedPayment description];
-//    
-//    
+//
+//
 //    [self dismissViewControllerAnimated:YES completion:^{
 ////        if (!self.toPublish) {
 //            self.tabBarController.tabBar.hidden = NO;
@@ -483,7 +483,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 ////                        //                            [self.tableView reloadData];
 ////                        SuccessViewController *successViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
 ////                        [self.navigationController pushViewController:successViewController animated:YES];
-////                        
+////
 ////                    }
 ////                }];
 ////                } else {
@@ -501,7 +501,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 //}
 
 //- (void)payPalFuturePaymentDidCancel:(PayPalFuturePaymentViewController *)futurePaymentViewController {
-//    
+//
 //}
 //
 //- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
@@ -513,7 +513,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 //}
 //
 //- (void)payPalFuturePaymentViewController:(PayPalFuturePaymentViewController *)futurePaymentViewController didAuthorizeFuturePayment:(NSDictionary *)futurePaymentAuthorization {
-//    
+//
 //}
 
 
@@ -530,16 +530,16 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    if (!self.toPublish) {
-        self.tabBarController.tabBar.hidden = NO;
-//    }
+    //    if (!self.toPublish) {
+    self.tabBarController.tabBar.hidden = NO;
+    //    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    if (!self.toPublish) {
-        self.tabBarController.tabBar.hidden = YES;
-//    }
+    //    if (!self.toPublish) {
+    self.tabBarController.tabBar.hidden = YES;
+    //    }
 }
 
 - (void)backButtonTapped:(id)sender {
@@ -579,19 +579,19 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSURL *clientTokenURL = [NSURL URLWithString:@"https://braintree-sample-merchant.herokuapp.com/client_token"];
-//    NSMutableURLRequest *clientTokenRequest = [NSMutableURLRequest requestWithURL:clientTokenURL];
-//    [clientTokenRequest setValue:@"text/plain" forHTTPHeaderField:@"Accept"];
-////
-//    [[[NSURLSession sharedSession] dataTaskWithRequest:clientTokenRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        // TODO: Handle errors
-//        NSString *clientToken = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSString *clientToken = @"eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI1ZDNiZDBkZWVlZWI1MjFiMDM4YTIyOGE0YWM2ZjQ4OWIxNmQ5MTkxN2IyZmNjZjQxYThhNzQ5ODBiMDg0NDBmfGNyZWF0ZWRfYXQ9MjAxNi0wNi0xNFQwNzoyMDowNC4zMjgyMDEwMjQrMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tLzM0OHBrOWNnZjNiZ3l3MmIifSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6dHJ1ZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwiYnJhaW50cmVlQ2xpZW50SWQiOiJtYXN0ZXJjbGllbnQzIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjp0cnVlLCJtZXJjaGFudEFjY291bnRJZCI6ImFjbWV3aWRnZXRzbHRkc2FuZGJveCIsImN1cnJlbmN5SXNvQ29kZSI6IlVTRCJ9LCJjb2luYmFzZUVuYWJsZWQiOmZhbHNlLCJtZXJjaGFudElkIjoiMzQ4cGs5Y2dmM2JneXcyYiIsInZlbm1vIjoib2ZmIn0=";
-//
-//        self.braintreeClient = [[BTAPIClient alloc] initWithAuthorization:clientToken];
-        // As an example, you may wish to present our Drop-in UI at this point.
-        // Continue to the next section to learn more...
-//    }] resume];
+    //    NSURL *clientTokenURL = [NSURL URLWithString:@"https://braintree-sample-merchant.herokuapp.com/client_token"];
+    //    NSMutableURLRequest *clientTokenRequest = [NSMutableURLRequest requestWithURL:clientTokenURL];
+    //    [clientTokenRequest setValue:@"text/plain" forHTTPHeaderField:@"Accept"];
+    ////
+    //    [[[NSURLSession sharedSession] dataTaskWithRequest:clientTokenRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    // TODO: Handle errors
+    //        NSString *clientToken = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    //        NSString *clientToken = @"eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI1ZDNiZDBkZWVlZWI1MjFiMDM4YTIyOGE0YWM2ZjQ4OWIxNmQ5MTkxN2IyZmNjZjQxYThhNzQ5ODBiMDg0NDBmfGNyZWF0ZWRfYXQ9MjAxNi0wNi0xNFQwNzoyMDowNC4zMjgyMDEwMjQrMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tLzM0OHBrOWNnZjNiZ3l3MmIifSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6dHJ1ZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwiYnJhaW50cmVlQ2xpZW50SWQiOiJtYXN0ZXJjbGllbnQzIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjp0cnVlLCJtZXJjaGFudEFjY291bnRJZCI6ImFjbWV3aWRnZXRzbHRkc2FuZGJveCIsImN1cnJlbmN5SXNvQ29kZSI6IlVTRCJ9LCJjb2luYmFzZUVuYWJsZWQiOmZhbHNlLCJtZXJjaGFudElkIjoiMzQ4cGs5Y2dmM2JneXcyYiIsInZlbm1vIjoib2ZmIn0=";
+    //
+    //        self.braintreeClient = [[BTAPIClient alloc] initWithAuthorization:clientToken];
+    // As an example, you may wish to present our Drop-in UI at this point.
+    // Continue to the next section to learn more...
+    //    }] resume];
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
     [[WebServiceManager sharedInstance] getClientTokenwithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
@@ -625,8 +625,8 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
         
         self.navigationItem.rightBarButtonItem = rightBarButtonItem1;
     }
-
-
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popToRoot:) name:@"PopToRoot" object:nil];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -640,13 +640,15 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     }
     
     if (!self.titleLabel) {
-        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel = [[UITextView alloc] init];
         self.titleLabel.font = [UIFont boldSystemFontOfSize:22];
+        self.titleLabel.scrollEnabled = NO;
+        self.titleLabel.editable = NO;
         [self.scrollView addSubview:self.titleLabel];
     }
     self.titleLabel.text = [NSString removeCharacterFromString:self.adDetails[@"titlu"]];
     self.titleLabel.textColor = [HXColor hx_colorWithHexString:@"222"];
-    self.titleLabel.numberOfLines = 0;
+    //    self.titleLabel.numberOfLines = 0;
     
     [self updateTitle];
     
@@ -660,16 +662,16 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     
     
     if (!self.toPublish) {
-//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        //        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
         NSString *dateString = self.adDetails[@"timp"];
-//        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
-//        NSDate *currentDate = [dateFormatter dateFromString:currentDateString];
-//        
-//        NSLog(@"CurrentDate:%@", currentDate);
-//        [dateFormatter setDateFormat:@"dd MMM yyyy', 'hh:mm"];
-//        NSString *dateString = [dateFormatter stringFromDate:currentDate];
-//
-//        
+        //        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+        //        NSDate *currentDate = [dateFormatter dateFromString:currentDateString];
+        //
+        //        NSLog(@"CurrentDate:%@", currentDate);
+        //        [dateFormatter setDateFormat:@"dd MMM yyyy', 'hh:mm"];
+        //        NSString *dateString = [dateFormatter stringFromDate:currentDate];
+        //
+        //
         if ([[self.adDetails[@"location"] objectForKey:@"titlu"] length]) {
             self.viewsLabel.text = [NSString stringWithFormat:@"%@, %@, %@ afisari",[self.adDetails[@"location"] objectForKey:@"titlu"], dateString, self.adDetails[@"afisari"]];
         } else {
@@ -683,7 +685,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
         }
     }
     self.viewsLabel.textColor = [HXColor hx_colorWithHexString:@"929292"];
-//
+    //
     if ([self.adDetails[@"images"] count]) {
         if (!self.collectionView) {
             UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
@@ -691,12 +693,12 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
             layout.minimumLineSpacing = 0;
             layout.minimumInteritemSpacing = 0;
             self.collectionView=[[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-
+            
             self.collectionView.pagingEnabled = YES;
             [self.collectionView setDataSource:self];
             [self.collectionView setDelegate:self];
             
-//            [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
+            //            [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
             [self.collectionView setBackgroundColor:[UIColor clearColor]];
             [self.collectionView registerClass:[PhotoGalleryCollectionViewCell class] forCellWithReuseIdentifier:@"PhotoGalleryCollectionViewCellIdentifier"];
             
@@ -709,18 +711,21 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
             self.pageControl.numberOfPages = [self.adDetails[@"images"] count];
             self.pageControl.currentPage = 0;
             self.pageControl.backgroundColor = [UIColor hx_colorWithHexString:@"929292"];
-//            self.pageControl.alpha = f;
+            //            self.pageControl.alpha = f;
             [self.scrollView addSubview:self.pageControl];
         }
     }
-//
+    //
     if (!self.descriptionLabel) {
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.descriptionLabel.textAlignment = NSTextAlignmentJustified;
+        self.descriptionLabel = [[UITextView alloc] initWithFrame:CGRectZero];
+        self.descriptionLabel.font = [UIFont systemFontOfSize:17];
+//        self.descriptionLabel.textAlignment = NSTextAlignmentJustified;
         
+        self.descriptionLabel.editable = NO;
+        self.descriptionLabel.scrollEnabled = NO;
         [self.scrollView addSubview:self.descriptionLabel];
     }
-//    self.descriptionLabel.text = self.adDetails[@"descriere"];
+    //    self.descriptionLabel.text = self.adDetails[@"descriere"];
     NSString *descriptionText = self.adDetails[@"descriere"];
     descriptionText = [NSString removeCharacterFromString:descriptionText];
     NSString *searchedString = [self findStringInDescription:descriptionText];
@@ -728,11 +733,10 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
         descriptionText = [descriptionText stringByReplacingOccurrencesOfString:searchedString withString:@""];
     }
     //    descriptionText = [descriptionText stringByReplacingOccurrencesOfString:@"U00c8" withString:@"asd"];
-//    descriptionText = [descriptionText stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-//    NSString *str = [NSString stringWithCharacters:"\U00c8" length:1];
+    //    descriptionText = [descriptionText stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    //    NSString *str = [NSString stringWithCharacters:"\U00c8" length:1];
     self.descriptionLabel.text = descriptionText;
-    self.descriptionLabel.numberOfLines = 0;
     
     [self updateDescription];
     
@@ -743,7 +747,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     self.usernameLabel.text = [NSString stringWithFormat:@"Publicat de: %@", [self.adDetails[@"user"] objectForKey:@"nume"]];
     self.usernameLabel.textColor = [HXColor hx_colorWithHexString:@"929292"];
     self.usernameLabel.font = [UIFont systemFontOfSize:15];
-
+    
     
     if (!self.createdAtLabel) {
         self.createdAtLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -756,12 +760,12 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     
     [dateFormatter2 setDateFormat:@"dd-MM-yyyy"];
     NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
-//    self.registeredLabel.text = [NSString stringWithFormat:@"Inregistrat pe %@",newDateString];
+    //    self.registeredLabel.text = [NSString stringWithFormat:@"Inregistrat pe %@",newDateString];
     self.createdAtLabel.text = [NSString stringWithFormat:@"Membru din: %@", newDateString];
     self.createdAtLabel.textColor = [HXColor hx_colorWithHexString:@"929292"];
     self.createdAtLabel.font = [UIFont systemFontOfSize:15];
-
-
+    
+    
     
     if (!self.separator1) {
         self.separator1 = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -770,7 +774,9 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     }
     
     if (!self.adIdLabel) {
-        self.adIdLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.adIdLabel = [[UITextView alloc] initWithFrame:CGRectZero];
+        self.adIdLabel.editable = NO;
+        self.adIdLabel.scrollEnabled = NO;
         self.adIdLabel.textColor = [HXColor hx_colorWithHexString:@"929292"];
         self.adIdLabel.textAlignment = NSTextAlignmentLeft;
         self.adIdLabel.font = [UIFont systemFontOfSize:15];
@@ -803,7 +809,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
         if (!self.toPublish) {
             [self.buttonsView setBackgroundColor:[UIColor whiteColor]];
             [self.view addSubview:self.buttonsView];
-
+            
         } else {
             [self.buttonsView setBackgroundColor:[UIColor clearColor]];
             [self.scrollView addSubview:self.buttonsView];
@@ -869,13 +875,13 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     self.pageControl.currentPage = indexPath.row;
     
     return cell;
-
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize size =  self.collectionView.frame.size;
-//    size.width -= 10;
+    //    size.width -= 10;
     return size;
 }
 
@@ -886,7 +892,7 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
         photoGalleryViewController.imagesArray = imagesArray;
         [self.navigationController pushViewController:photoGalleryViewController animated:YES];
     }
-
+    
 }
 
 - (void)openImages:(UIGestureRecognizer *)gesture {
@@ -983,51 +989,51 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
 
 - (void)emailButtonTapped:(id)sender {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    if ([userDefaults objectForKey:@"email"]) {
-//        EmailViewController *emailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewControllerIdentifier"];
-//        NSDictionary *emailInfo = [NSDictionary dictionaryWithObjectsAndKeys:[userDefaults objectForKey:@"email"],@"email",self.adDetails[@"id_anunt"], @"id_anunt", nil];
-//        emailViewController.fieldType = SEND_EMAIL;
-//        emailViewController.emailInfo = emailInfo;
-//        [self.navigationController pushViewController:emailViewController animated:YES];
-//    } else if ([userDefaults objectForKey:@"facebookEmail"]) {
-        EmailViewController *emailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewControllerIdentifier"];
-        NSDictionary *emailInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"email",self.adDetails[@"id_anunt"], @"id_anunt", nil];
-        emailViewController.emailInfo = emailInfo;
-        emailViewController.fieldType = SEND_EMAIL;
-        [self.navigationController pushViewController:emailViewController animated:YES];
-        
-//    } else {
-//        [[[UIAlertView alloc] initWithTitle:@"Atentie" message:@"Pentru a trimite e-mail, trebuie sa va logati" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//    }
-//    NSString * subject = @"";
-//    //email body
-//    NSString * body = @"";
-//    //recipient(s)
-//    NSArray * recipients = [NSArray arrayWithObjects:[self.adDetails[@"user"] objectForKey:@"email"], nil];
-//    
-//    //create the MFMailComposeViewController
-//    MFMailComposeViewController * composer = [[MFMailComposeViewController alloc] init];
-//    composer.mailComposeDelegate = self;
-//    [composer setSubject:subject];
-//    [composer setMessageBody:body isHTML:YES];
-//    //[composer setMessageBody:body isHTML:YES]; //if you want to send an HTML message
-//    [composer setToRecipients:recipients];
-//    
-//    //get the filepath from resources
-//    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"];
-//    
-//    //read the file using NSData
-//    //    NSData * fileData = [NSData dataWithContentsOfFile:filePath];
-//    //    NSString *mimeType = @"image/png";
-//    
-//    //add attachement
-//    //    [composer addAttachmentData:fileData mimeType:mimeType fileName:filePath];
-//    
-//    //present it on the screen
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
-//    [self presentViewController:composer animated:YES completion:^{
-//        [hud hide:YES];
-//    }];
+    //    if ([userDefaults objectForKey:@"email"]) {
+    //        EmailViewController *emailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewControllerIdentifier"];
+    //        NSDictionary *emailInfo = [NSDictionary dictionaryWithObjectsAndKeys:[userDefaults objectForKey:@"email"],@"email",self.adDetails[@"id_anunt"], @"id_anunt", nil];
+    //        emailViewController.fieldType = SEND_EMAIL;
+    //        emailViewController.emailInfo = emailInfo;
+    //        [self.navigationController pushViewController:emailViewController animated:YES];
+    //    } else if ([userDefaults objectForKey:@"facebookEmail"]) {
+    EmailViewController *emailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewControllerIdentifier"];
+    NSDictionary *emailInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"email",self.adDetails[@"id_anunt"], @"id_anunt", nil];
+    emailViewController.emailInfo = emailInfo;
+    emailViewController.fieldType = SEND_EMAIL;
+    [self.navigationController pushViewController:emailViewController animated:YES];
+    
+    //    } else {
+    //        [[[UIAlertView alloc] initWithTitle:@"Atentie" message:@"Pentru a trimite e-mail, trebuie sa va logati" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    //    }
+    //    NSString * subject = @"";
+    //    //email body
+    //    NSString * body = @"";
+    //    //recipient(s)
+    //    NSArray * recipients = [NSArray arrayWithObjects:[self.adDetails[@"user"] objectForKey:@"email"], nil];
+    //
+    //    //create the MFMailComposeViewController
+    //    MFMailComposeViewController * composer = [[MFMailComposeViewController alloc] init];
+    //    composer.mailComposeDelegate = self;
+    //    [composer setSubject:subject];
+    //    [composer setMessageBody:body isHTML:YES];
+    //    //[composer setMessageBody:body isHTML:YES]; //if you want to send an HTML message
+    //    [composer setToRecipients:recipients];
+    //    
+    //    //get the filepath from resources
+    //    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"];
+    //    
+    //    //read the file using NSData
+    //    //    NSData * fileData = [NSData dataWithContentsOfFile:filePath];
+    //    //    NSString *mimeType = @"image/png";
+    //    
+    //    //add attachement
+    //    //    [composer addAttachmentData:fileData mimeType:mimeType fileName:filePath];
+    //    
+    //    //present it on the screen
+    //    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    //    [self presentViewController:composer animated:YES completion:^{
+    //        [hud hide:YES];
+    //    }];
 }
 
 /*
