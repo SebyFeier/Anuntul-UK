@@ -283,7 +283,7 @@
             if (error.code == 404 || error.code == 500) {
                 //SHOW MISSING MESSAGE
                 SuccessViewController *successController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
-
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     successController.isError = YES;
                     [self presentViewController:successController animated:YES completion:NULL];
@@ -481,6 +481,12 @@
     [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:self.keyWordsTextField.text andLocation:[NSString stringWithFormat:@"%@",selectedLocation[@"id"]] andCategory:[NSString stringWithFormat:@"%@",selectedCategory[@"id_categ"]] andPageNumber:[NSNumber numberWithInt:1] withCompletionBlock:^(NSArray *array, NSError *error) {
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
         if (!error) {
+            if (array && array.count < 1) {
+                SuccessViewController *success = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+                success.isEmpty = YES;
+                [self presentViewController:success animated:YES completion:NULL];
+                return;
+            }
             _isPremium = NO;
             _searchResultsRequired = YES;
             self.listOfAds = [[NSMutableArray alloc] initWithArray:[[[WebServiceManager sharedInstance] adsValues] objectForKey:[[WebServiceManager sharedInstance] categoryId]]];
@@ -496,8 +502,11 @@
             }
             [[WebServiceManager sharedInstance] setCategoryName:headerTitle];
             [self.categoriesTableView reloadData];
-            [self.categoriesTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            
+            if ([_listOfAds count] > 0) {
+                
+                
+                [self.categoriesTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
             NSString *string = [[WebServiceManager sharedInstance] categoryName];
             self.navigationItem.title = string;
             self.tabBarController.navigationItem.title = string;

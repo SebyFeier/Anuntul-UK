@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *addAnnouncementButton;
 
 @property (nonatomic, assign) BOOL isError;
+@property (nonatomic, assign) BOOL isEmpty;
 @end

@@ -27,6 +27,17 @@
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
     [_backBtn setHidden:YES];
+    
+    if (_isEmpty) {
+        [_backBtn setHidden:NO];
+        [_successImageView setHidden:YES];
+        self.titleLabel.text = @"Nici un rezultat";
+        self.messageLabel.text = @"Cautati din nou!";
+        [self.myAnnouncements setHidden:YES];
+        [self.addAnnouncementButton setHidden:YES];
+        return;
+    }
+    
     if (_isError) {
         [_backBtn setHidden:NO];
         [_successImageView setHidden:YES];
