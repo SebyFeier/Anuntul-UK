@@ -16,6 +16,8 @@
     
 }
 @property (weak, nonatomic) IBOutlet UIButton *addNewAnnouncementButton;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *successImageView;
 
 @end
 
@@ -24,6 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
+    [_backBtn setHidden:YES];
+    if (_isError) {
+        [_backBtn setHidden:NO];
+        [_successImageView setHidden:YES];
+        self.titleLabel.text = @"Eroare";
+        self.messageLabel.text = @"Anunt inexistent sau expirat! Anuntul asteapta aprobarea unui administrator!";
+        [self.myAnnouncements setHidden:YES];
+        [self.addAnnouncementButton setHidden:YES];
+    }
 }
 - (IBAction)addNewAnnouncement:(id)sender {
     
@@ -51,6 +62,9 @@
         }
     }];
 
+}
+- (IBAction)backBtnTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

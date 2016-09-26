@@ -14,6 +14,7 @@
 #import "CategoryTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "AnnouncementTypesViewController.h"
+#import "SuccessViewController.h"
 
 @interface LocationAdsViewController()<AdsDelegate, UIActionSheetDelegate> {
     NSInteger _pageNumber;

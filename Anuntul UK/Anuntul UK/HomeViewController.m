@@ -17,6 +17,8 @@
 #import "UIColor+CustomColor.h"
 #import "HexColors.h"
 #import "SelectionViewController.h"
+#import "SuccessViewController.h"
+
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, AdsDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, SelectionDelegate> {
     NSInteger _pageNumber;
     BOOL _isSearch;
@@ -48,8 +50,8 @@
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(closeSearchView:)];
     [self.searchView addGestureRecognizer:panGesture];
     _isSearch = NO;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchButtonTapped:) name:@"SearchButtonTapped" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPremiumAnnouncements:) name:@"GetPremiumAnnouncements" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchButtonTapped:) name:@"SearchButtonTapped" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPremiumAnnouncements:) name:@"GetPremiumAnnouncements" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popToRoot:) name:@"PopToRoot" object:nil];
     _pageNumber = 2;
     self.navigationController.navigationBarHidden = NO;
@@ -100,7 +102,7 @@
             NSString *string = [[WebServiceManager sharedInstance] categoryName];
             self.navigationItem.title = string;
             self.tabBarController.navigationItem.title = string;
-
+            
             self.searchTrailingConstraint.constant = -CGRectGetWidth(self.view.frame);
             [UIView animateWithDuration:0.25 animations:^{
                 [self.view layoutIfNeeded];
@@ -120,14 +122,14 @@
     [UIView animateWithDuration:0.25f animations:^{
         [self.view layoutIfNeeded];
     }];
-//    self.searchTrailingConstraint.constant = 0;
-//    [self.view layoutIfNeeded];
+    //    self.searchTrailingConstraint.constant = 0;
+    //    [self.view layoutIfNeeded];
     _isPremium = YES;
     _searchResultsRequired = NO;
     NSString *string = [[WebServiceManager sharedInstance] categoryName];
     self.navigationItem.title = string;
     self.tabBarController.navigationItem.title = string;
-
+    
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
     [[WebServiceManager sharedInstance] getPremiumAnnouncementWithPageNumber:[NSNumber numberWithInteger:1] withCompletionBlock:^(NSArray *array, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
@@ -154,8 +156,8 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     UIColor *color = [UIColor hx_colorWithHexString:@"BFBFBF"];
     self.keyWordsTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Caută" attributes:@{NSForegroundColorAttributeName:color}];
-
-
+    
+    
     //    [self showTabBar:self.tabBarController];
 }
 
@@ -174,17 +176,17 @@
 }
 
 - (IBAction)searchButtonTapped:(id)notification {
-
+    
     self.searchWidthConstraint.constant = CGRectGetWidth(self.view.frame);
     if (!_isSearch) {
         self.navigationItem.title = @"Căutare";
         self.tabBarController.navigationItem.title = @"Căutare";
-
+        
         allCategories = [NSMutableArray arrayWithArray:[[WebServiceManager sharedInstance] listOfCategories]];
-//        [allCategories removeObjectAtIndex:0];
+        //        [allCategories removeObjectAtIndex:0];
         [allCategories removeLastObject];
-//        [allCategories removeLastObject];
-//        [allCategories removeLastObject];
+        //        [allCategories removeLastObject];
+        //        [allCategories removeLastObject];
         
         allLocations = [[NSMutableArray alloc] init];
         NSArray *locations = [[WebServiceManager sharedInstance] listOfLocations];
@@ -194,9 +196,9 @@
         [allLocations insertObject:[NSDictionary dictionaryWithObject:@"Toate locatiile" forKey:@"titlu"] atIndex:0];
         selectedLocation = [allLocations firstObject];
         selectedCategory = [allCategories firstObject];
-//        self.locationsTextField.text = selectedLocation[@"titlu"];
+        //        self.locationsTextField.text = selectedLocation[@"titlu"];
         [self.locationsButton setTitle:selectedLocation[@"titlu"] forState:UIControlStateNormal];
-//        self.categoriesTextField.text = selectedCategory[@"titlu"];
+        //        self.categoriesTextField.text = selectedCategory[@"titlu"];
         [self.categoriesButton setTitle:selectedCategory[@"titlu"] forState:UIControlStateNormal];
         
         _searchTrailingConstraint.constant = 0;
@@ -278,7 +280,17 @@
             adsDetailsViewController.toPublish = NO;
             [self.navigationController pushViewController:adsDetailsViewController animated:YES];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Eroare" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            if (error.code == 404 || error.code == 500) {
+                //SHOW MISSING MESSAGE
+                SuccessViewController *successController = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    successController.isError = YES;
+                    [self presentViewController:successController animated:YES completion:NULL];
+                });
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Eroare" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }
         }
         
     }];
@@ -326,8 +338,8 @@
         if (!_isPremium) {
             if (!_searchResultsRequired) {
                 [[WebServiceManager sharedInstance] getAdsFromCategory:[[WebServiceManager sharedInstance] categoryId] andPage:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
-//                [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:@"" andCategory:[NSString stringWithFormat:@"%@",[[WebServiceManager sharedInstance] categoryId]] andPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
-
+                    //                [[WebServiceManager sharedInstance] getSearchResultsWithKeyWord:@"" andLocation:@"" andCategory:[NSString stringWithFormat:@"%@",[[WebServiceManager sharedInstance] categoryId]] andPageNumber:[NSNumber numberWithInteger:_pageNumber] withCompletionBlock:^(NSArray *array, NSError *error) {
+                    
                     [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window]
                                          animated:YES];
                     if (!error) {
@@ -395,20 +407,20 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    if (textField == self.categoriesTextField) {
-//        [self createToolbar];
-//        [self createPickerView];
-//        [textField setInputView:pickerView];
-//        [textField setInputAccessoryView:doneToolbar_];
-//        [pickerView reloadAllComponents];
-//    } else if (textField == self.locationsTextField) {
-//        [self createToolbar];
-//        [self createPickerView];
-//        [textField setInputView:pickerView];
-//        [textField setInputAccessoryView:doneToolbar_];
-//        [pickerView reloadAllComponents];
-//        
-//    }
+    //    if (textField == self.categoriesTextField) {
+    //        [self createToolbar];
+    //        [self createPickerView];
+    //        [textField setInputView:pickerView];
+    //        [textField setInputAccessoryView:doneToolbar_];
+    //        [pickerView reloadAllComponents];
+    //    } else if (textField == self.locationsTextField) {
+    //        [self createToolbar];
+    //        [self createPickerView];
+    //        [textField setInputView:pickerView];
+    //        [textField setInputAccessoryView:doneToolbar_];
+    //        [pickerView reloadAllComponents];
+    //
+    //    }
     
 }
 
@@ -438,21 +450,21 @@
 
 - (void)toolBarSelectedDone:(id)sender {
     if (sender) {
-//        if ([self.categoriesTextField isFirstResponder]) {
-//            if (selectedCategory) {
-//                self.categoriesTextField.text = [selectedCategory objectForKey:@"titlu"];
-//            } else {
-//                selectedCategory = [allCategories objectAtIndex:0];
-//                self.categoriesTextField.text = [[allCategories objectAtIndex:0] objectForKey:@"titlu"];
-//            }
-//        } else if ([self.locationsTextField isFirstResponder]) {
-//            if (selectedLocation) {
-//                self.locationsTextField.text = [selectedLocation objectForKey:@"titlu"];
-//            } else {
-//                selectedLocation = [allLocations objectAtIndex:0];
-//                self.locationsTextField.text = [[allLocations objectAtIndex:0] objectForKey:@"titlu"];
-//            }
-//        }
+        //        if ([self.categoriesTextField isFirstResponder]) {
+        //            if (selectedCategory) {
+        //                self.categoriesTextField.text = [selectedCategory objectForKey:@"titlu"];
+        //            } else {
+        //                selectedCategory = [allCategories objectAtIndex:0];
+        //                self.categoriesTextField.text = [[allCategories objectAtIndex:0] objectForKey:@"titlu"];
+        //            }
+        //        } else if ([self.locationsTextField isFirstResponder]) {
+        //            if (selectedLocation) {
+        //                self.locationsTextField.text = [selectedLocation objectForKey:@"titlu"];
+        //            } else {
+        //                selectedLocation = [allLocations objectAtIndex:0];
+        //                self.locationsTextField.text = [[allLocations objectAtIndex:0] objectForKey:@"titlu"];
+        //            }
+        //        }
         [self.view endEditing:YES];
     }
 }
@@ -475,7 +487,7 @@
             [self searchButtonTapped:nil];
             NSString *headerTitle = @"";
             if (selectedLocation && selectedCategory) {
-//                headerTitle = [NSString stringWithFormat:@"%@, %@",selectedLocation[@"titlu"], selectedCategory[@"titlu"]];
+                //                headerTitle = [NSString stringWithFormat:@"%@, %@",selectedLocation[@"titlu"], selectedCategory[@"titlu"]];
                 headerTitle = @"Rezultate";
             } else if (selectedLocation && !selectedCategory) {
                 headerTitle = selectedLocation[@"titlu"];
@@ -485,11 +497,11 @@
             [[WebServiceManager sharedInstance] setCategoryName:headerTitle];
             [self.categoriesTableView reloadData];
             [self.categoriesTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-
+            
             NSString *string = [[WebServiceManager sharedInstance] categoryName];
             self.navigationItem.title = string;
             self.tabBarController.navigationItem.title = string;
-//            self.searchButton.width = 0;
+            //            self.searchButton.width = 0;
             self.tabBarController.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
             self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
             self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -506,31 +518,31 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-//    if ([self.categoriesTextField isFirstResponder]) {
-//        return allCategories.count;
-//    } else if ([self.locationsTextField isFirstResponder]) {
-//        return allLocations.count;
-//    }
+    //    if ([self.categoriesTextField isFirstResponder]) {
+    //        return allCategories.count;
+    //    } else if ([self.locationsTextField isFirstResponder]) {
+    //        return allLocations.count;
+    //    }
     return 2;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    if ([self.categoriesTextField isFirstResponder]) {
-//        return [[allCategories objectAtIndex:row] objectForKey:@"titlu"];
-//    } else if ([self.locationsTextField isFirstResponder]) {
-//        return [[allLocations objectAtIndex:row] objectForKey:@"titlu"];
-//    }
+    //    if ([self.categoriesTextField isFirstResponder]) {
+    //        return [[allCategories objectAtIndex:row] objectForKey:@"titlu"];
+    //    } else if ([self.locationsTextField isFirstResponder]) {
+    //        return [[allLocations objectAtIndex:row] objectForKey:@"titlu"];
+    //    }
     return @"";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-//    if ([self.categoriesTextField isFirstResponder]) {
-//        selectedCategory = nil;
-//        selectedCategory = [[NSDictionary alloc] initWithDictionary:[allCategories objectAtIndex:row]];
-//    } else if ([self.locationsTextField isFirstResponder]) {
-//        selectedLocation = nil;
-//        selectedLocation = [[NSDictionary alloc] initWithDictionary:[allLocations objectAtIndex:row]];
-//    }
+    //    if ([self.categoriesTextField isFirstResponder]) {
+    //        selectedCategory = nil;
+    //        selectedCategory = [[NSDictionary alloc] initWithDictionary:[allCategories objectAtIndex:row]];
+    //    } else if ([self.locationsTextField isFirstResponder]) {
+    //        selectedLocation = nil;
+    //        selectedLocation = [[NSDictionary alloc] initWithDictionary:[allLocations objectAtIndex:row]];
+    //    }
 }
 
 - (IBAction)categoriesButtonTapped:(id)sender {

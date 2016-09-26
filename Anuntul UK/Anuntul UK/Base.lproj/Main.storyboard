@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fOL-zI-Pfj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fOL-zI-Pfj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -447,27 +447,49 @@
                                                         <constraint firstAttribute="width" constant="60" id="oPT-Oz-Oq3"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="featuredRibbon" translatesAutoresizingMaskIntoConstraints="NO" id="i8R-os-gXX">
+                                                    <rect key="frame" x="8" y="6" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="1bK-73-eKK"/>
+                                                        <constraint firstAttribute="height" constant="35" id="5lG-bB-c0A"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="i8R-os-gXX" firstAttribute="centerY" secondItem="HIb-LW-ocJ" secondAttribute="centerY" id="5Hm-mg-WVU"/>
                                                 <constraint firstItem="mH2-aZ-yFW" firstAttribute="leading" secondItem="HIb-LW-ocJ" secondAttribute="trailing" constant="13" id="6tk-xa-Lza"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="T6Y-uW-zbV" secondAttribute="bottom" constant="-5" id="8Fb-0Z-Sd7"/>
+                                                <constraint firstItem="i8R-os-gXX" firstAttribute="height" secondItem="HIb-LW-ocJ" secondAttribute="height" id="A8k-2X-Qc3"/>
+                                                <constraint firstItem="i8R-os-gXX" firstAttribute="width" secondItem="HIb-LW-ocJ" secondAttribute="width" id="DOa-Pt-hJC"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="HIb-LW-ocJ" secondAttribute="leading" id="HNM-AY-4GU"/>
                                                 <constraint firstItem="mH2-aZ-yFW" firstAttribute="top" secondItem="EMN-65-YQc" secondAttribute="topMargin" constant="-2" id="HPe-Vw-MnA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="T6Y-uW-zbV" secondAttribute="trailing" id="QXU-ND-syL"/>
                                                 <constraint firstItem="HIb-LW-ocJ" firstAttribute="top" secondItem="EMN-65-YQc" secondAttribute="topMargin" constant="-2" id="RMM-K0-Dzp"/>
+                                                <constraint firstItem="i8R-os-gXX" firstAttribute="leading" secondItem="HIb-LW-ocJ" secondAttribute="leading" id="SrI-jV-bFM"/>
                                                 <constraint firstItem="t4J-fr-jl5" firstAttribute="top" secondItem="mH2-aZ-yFW" secondAttribute="bottom" constant="3" id="VMv-fZ-WNg"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="t4J-fr-jl5" secondAttribute="bottom" constant="-5" id="VrA-Xg-q0Y"/>
                                                 <constraint firstItem="T6Y-uW-zbV" firstAttribute="top" secondItem="mH2-aZ-yFW" secondAttribute="bottom" constant="3" id="VxU-fk-7Ch"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mH2-aZ-yFW" secondAttribute="trailing" id="YwO-V7-0vg"/>
+                                                <constraint firstItem="i8R-os-gXX" firstAttribute="centerX" secondItem="HIb-LW-ocJ" secondAttribute="centerX" id="chU-ZA-gJE"/>
                                                 <constraint firstItem="T6Y-uW-zbV" firstAttribute="leading" secondItem="t4J-fr-jl5" secondAttribute="trailing" id="h2U-xS-Ic7"/>
                                                 <constraint firstItem="t4J-fr-jl5" firstAttribute="leading" secondItem="HIb-LW-ocJ" secondAttribute="trailing" constant="13" id="qHh-VU-28r"/>
+                                                <constraint firstItem="i8R-os-gXX" firstAttribute="top" secondItem="HIb-LW-ocJ" secondAttribute="top" id="yyo-7R-ARw"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="5Hm-mg-WVU"/>
+                                                    <exclude reference="A8k-2X-Qc3"/>
+                                                    <exclude reference="DOa-Pt-hJC"/>
+                                                    <exclude reference="chU-ZA-gJE"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="adCategoryLabel" destination="T6Y-uW-zbV" id="JRh-yR-IGB"/>
                                             <outlet property="adDateLabel" destination="t4J-fr-jl5" id="ho5-cr-wEr"/>
                                             <outlet property="adImageView" destination="HIb-LW-ocJ" id="bBK-xL-FXp"/>
                                             <outlet property="adNameLabel" destination="mH2-aZ-yFW" id="kdS-Qp-P7S"/>
+                                            <outlet property="featuredImageView" destination="i8R-os-gXX" id="yVP-q5-esE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2280,9 +2302,24 @@
                                     <action selector="goToMyAnnouncements:" destination="0KZ-k4-rkl" eventType="touchUpInside" id="2CJ-7B-hX5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gf-Ka-ur2">
+                                <rect key="frame" x="534" y="34" width="46" height="30"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="req-Oo-FbF">
+                                <rect key="frame" x="21" y="40" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="2mE-Mr-CcE"/>
+                                    <constraint firstAttribute="height" constant="44" id="xlB-zr-0Kb"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="backBtnTapped:" destination="0KZ-k4-rkl" eventType="touchUpInside" id="elR-Qv-IXU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="req-Oo-FbF" firstAttribute="leading" secondItem="fA1-VT-FjM" secondAttribute="leading" constant="21" id="5lp-cM-wLh"/>
                             <constraint firstAttribute="trailing" secondItem="2v7-Pa-ad5" secondAttribute="trailing" id="8Dc-Tl-loo"/>
                             <constraint firstItem="g61-dE-Mbt" firstAttribute="top" secondItem="cKH-cS-Ikp" secondAttribute="bottom" constant="16" id="BPD-gP-hh0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKH-cS-Ikp" secondAttribute="trailing" id="CGg-6g-YaZ"/>
@@ -2296,12 +2333,19 @@
                             <constraint firstItem="P9M-yf-hFU" firstAttribute="top" secondItem="ufj-T6-gKa" secondAttribute="bottom" constant="36" id="g9B-hI-JSi"/>
                             <constraint firstItem="quR-oS-1JV" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="idL-o9-kRT"/>
                             <constraint firstItem="quR-oS-1JV" firstAttribute="top" secondItem="g61-dE-Mbt" secondAttribute="bottom" constant="17" id="jba-En-kJn"/>
+                            <constraint firstItem="req-Oo-FbF" firstAttribute="top" secondItem="f5M-jq-rE0" secondAttribute="bottom" constant="20" id="qWT-EI-blg"/>
                             <constraint firstItem="ufj-T6-gKa" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="txI-Vl-dkE"/>
                             <constraint firstItem="g61-dE-Mbt" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="usY-nd-C7Z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addAnnouncementButton" destination="g61-dE-Mbt" id="Qsn-yb-v0l"/>
                         <outlet property="addNewAnnouncementButton" destination="g61-dE-Mbt" id="1Gm-fK-x6g"/>
+                        <outlet property="backBtn" destination="req-Oo-FbF" id="hff-5F-aQb"/>
+                        <outlet property="messageLabel" destination="cKH-cS-Ikp" id="frx-Hi-748"/>
+                        <outlet property="myAnnouncements" destination="quR-oS-1JV" id="ljx-nr-G64"/>
+                        <outlet property="successImageView" destination="ufj-T6-gKa" id="oxA-Gh-Bm7"/>
+                        <outlet property="titleLabel" destination="P9M-yf-hFU" id="Wh9-Cv-z4d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xn-qm-lLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2311,8 +2355,10 @@
     </scenes>
     <resources>
         <image name="add-announce" width="30" height="30"/>
+        <image name="back" width="20" height="15"/>
         <image name="blog" width="30" height="29"/>
         <image name="dots" width="9" height="40"/>
+        <image name="featuredRibbon" width="112" height="112"/>
         <image name="gray_background" width="320" height="568"/>
         <image name="home" width="30" height="28"/>
         <image name="logo" width="29" height="29"/>

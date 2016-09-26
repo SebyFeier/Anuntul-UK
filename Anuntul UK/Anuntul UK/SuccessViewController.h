@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface SuccessViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *myAnnouncements;
+@property (weak, nonatomic) IBOutlet UIButton *addAnnouncementButton;
+
+@property (nonatomic, assign) BOOL isError;
 @end

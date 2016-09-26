@@ -94,7 +94,16 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(optionsButtonTapped:)];
         self.optionsImageView.userInteractionEnabled = YES;
         [self.optionsImageView addGestureRecognizer:tapGesture];
+    
     }
+    
+    if ([[cellInfo objectForKey:@"e_promovat"] boolValue] ||
+        [[cellInfo objectForKey:@"top_locatii"] boolValue]) {
+        //SHOW FEATURED
+        [_featuredImageView setHidden:NO];
+    }
+    
+    
     [self layoutIfNeeded];
 }
 

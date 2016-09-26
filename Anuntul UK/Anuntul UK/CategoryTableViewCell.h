@@ -20,6 +20,7 @@
 
 @property (nonatomic, weak) id<AdsDelegate>delegate;
 
+@property (weak, nonatomic) IBOutlet UIImageView *featuredImageView;
 - (void)updateCellWithInfo:(NSDictionary *)cellInfo withMyProfile:(BOOL)isMyProfile andIndexpath:(NSIndexPath *)indexpath;
 
 @end

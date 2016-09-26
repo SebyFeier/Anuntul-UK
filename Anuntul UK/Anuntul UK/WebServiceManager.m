@@ -187,6 +187,10 @@ NSString *const WebServiceUrl = @"http://api.anuntul.co.uk";
         completionBlock(JSON, nil);
         NSLog(@"%@",JSON);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        if (response.statusCode == 404 || response.statusCode == 500) {
+            completionBlock(nil, [NSError errorWithDomain:@"com.http.error" code:response.statusCode userInfo:nil]);
+            return;
+        }
         completionBlock(JSON, error);
     }];
     [operation start];
