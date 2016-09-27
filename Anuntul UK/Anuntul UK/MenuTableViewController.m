@@ -169,6 +169,7 @@
                 [[WebServiceManager sharedInstance] setCategoryName:[cellInfo objectForKey:@"titlu"]];
                 [[WebServiceManager sharedInstance] setBottomConstraint:-50];
                 HomeViewController *locationsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewControllerIdentifier"];
+                locationsViewController.isCategory = YES;
                 CATransition* transition = [CATransition animation];
                 transition.duration = 0.5;
                 transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];

@@ -327,6 +327,7 @@
         cell = [[CategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CategoryTableViewCellIdentifier"];
     }
     cell.delegate = self;
+    cell.isHome = !_isCategory;
     NSDictionary *ad = self.listOfAds[indexPath.row];
     [cell updateCellWithInfo:ad withMyProfile:NO andIndexpath:indexPath];
     return cell;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ListOfAdsViewController : UIViewController
-
+@property (nonatomic, assign) BOOL isHome;
 @property (nonatomic, strong) NSMutableArray *listOfAds;
 
 @end

@@ -37,7 +37,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -50,23 +50,23 @@
         [self.userImageView addGestureRecognizer:tapGesture];
         self.userImageView.userInteractionEnabled = YES;
     }
-//    self.adImageView
+    //    self.adImageView
     self.adNameLabel.numberOfLines = 0;
     self.adNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-
+    
     [self.adNameLabel sizeToFit];
     self.adNameLabel.text = [NSString removeCharacterFromString:cellInfo[@"titlu"]];
     self.adNameLabel.text = [self.adNameLabel.text stringByAppendingString:@"\n"];
-//    self.adCategoryLabel.text = cellInfo[@"data"];
-//    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
+    //    self.adCategoryLabel.text = cellInfo[@"data"];
+    //    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
     NSString *newDateString = [cellInfo objectForKey:@"data"];
-//    [dateFormatter2 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
-//    NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
-//    
-//    [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
-//    NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
+    //    [dateFormatter2 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+    //    NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
+    //
+    //    [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
+    //    NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
     self.adCategoryLabel.text = newDateString;
-//    self.adCategoryLabel.text = @"Date";
+    //    self.adCategoryLabel.text = @"Date";
     if (cellInfo[@"location"]) {
         if ([cellInfo[@"location"] objectForKey:@"titlu"] && [[cellInfo[@"location"] objectForKey:@"titlu"] length]) {
             self.adDateLabel.text = [cellInfo[@"location"] objectForKey:@"titlu"];
@@ -94,15 +94,16 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(optionsButtonTapped:)];
         self.optionsImageView.userInteractionEnabled = YES;
         [self.optionsImageView addGestureRecognizer:tapGesture];
-    
+        
     }
-    
-    if ([[cellInfo objectForKey:@"e_promovat"] boolValue] ||
-        [[cellInfo objectForKey:@"top_locatii"] boolValue]) {
-        //SHOW FEATURED
-        [_featuredImageView setHidden:NO];
+    [_featuredImageView setHidden:YES];
+    if (!_isHome) {
+        if ([[cellInfo objectForKey:@"on_top"] boolValue] ||
+            [[cellInfo objectForKey:@"top_locatii"] boolValue]) {
+            //SHOW FEATURED
+            [_featuredImageView setHidden:NO];
+        }
     }
-    
     
     [self layoutIfNeeded];
 }

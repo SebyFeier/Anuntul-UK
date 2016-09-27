@@ -19,7 +19,7 @@
 @interface CategoryTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) id<AdsDelegate>delegate;
-
+@property (nonatomic, assign) BOOL isHome;
 @property (weak, nonatomic) IBOutlet UIImageView *featuredImageView;
 - (void)updateCellWithInfo:(NSDictionary *)cellInfo withMyProfile:(BOOL)isMyProfile andIndexpath:(NSIndexPath *)indexpath;
 

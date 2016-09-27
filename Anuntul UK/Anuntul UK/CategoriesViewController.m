@@ -60,6 +60,7 @@
 //    NSDictionary *ad = self.listOfCategories[indexPath.row];
     ListOfAdsViewController *listOfAdsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ListOfAdsViewControllerIdentifier"];
     listOfAdsViewController.listOfAds = self.listOfCategories;
+    listOfAdsViewController.isHome = NO;
     [self.navigationController pushViewController:listOfAdsViewController animated:YES];
 }
 
