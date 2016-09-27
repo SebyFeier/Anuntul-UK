@@ -2302,28 +2302,36 @@
                                     <action selector="goToMyAnnouncements:" destination="0KZ-k4-rkl" eventType="touchUpInside" id="2CJ-7B-hX5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gf-Ka-ur2">
-                                <rect key="frame" x="534" y="34" width="46" height="30"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="req-Oo-FbF">
-                                <rect key="frame" x="21" y="40" width="44" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Q8-tv-c8l">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="req-Oo-FbF">
+                                        <rect key="frame" x="15" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="2mE-Mr-CcE"/>
+                                            <constraint firstAttribute="height" constant="44" id="xlB-zr-0Kb"/>
+                                        </constraints>
+                                        <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backBtnTapped:" destination="0KZ-k4-rkl" eventType="touchUpInside" id="elR-Qv-IXU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="2mE-Mr-CcE"/>
-                                    <constraint firstAttribute="height" constant="44" id="xlB-zr-0Kb"/>
+                                    <constraint firstAttribute="height" constant="64" id="8Nw-oD-JpQ"/>
+                                    <constraint firstItem="req-Oo-FbF" firstAttribute="centerY" secondItem="8Q8-tv-c8l" secondAttribute="centerY" constant="10" id="i2P-w8-Bky"/>
+                                    <constraint firstItem="req-Oo-FbF" firstAttribute="leading" secondItem="8Q8-tv-c8l" secondAttribute="leading" constant="15" id="ncf-fW-uBk"/>
                                 </constraints>
-                                <state key="normal" image="back"/>
-                                <connections>
-                                    <action selector="backBtnTapped:" destination="0KZ-k4-rkl" eventType="touchUpInside" id="elR-Qv-IXU"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="req-Oo-FbF" firstAttribute="leading" secondItem="fA1-VT-FjM" secondAttribute="leading" constant="21" id="5lp-cM-wLh"/>
                             <constraint firstAttribute="trailing" secondItem="2v7-Pa-ad5" secondAttribute="trailing" id="8Dc-Tl-loo"/>
                             <constraint firstItem="g61-dE-Mbt" firstAttribute="top" secondItem="cKH-cS-Ikp" secondAttribute="bottom" constant="16" id="BPD-gP-hh0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKH-cS-Ikp" secondAttribute="trailing" id="CGg-6g-YaZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cKH-cS-Ikp" secondAttribute="leading" id="FqM-mM-jFo"/>
+                            <constraint firstItem="8Q8-tv-c8l" firstAttribute="top" secondItem="f5M-jq-rE0" secondAttribute="bottom" constant="-20" id="Ju6-Hq-nJS"/>
                             <constraint firstItem="P9M-yf-hFU" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="Ohh-A4-TfW"/>
                             <constraint firstItem="cKH-cS-Ikp" firstAttribute="top" secondItem="P9M-yf-hFU" secondAttribute="bottom" constant="8" id="RzI-S1-98R"/>
                             <constraint firstItem="ufj-T6-gKa" firstAttribute="top" secondItem="f5M-jq-rE0" secondAttribute="bottom" constant="46" id="Y3a-lp-ved"/>
@@ -2331,26 +2339,29 @@
                             <constraint firstItem="2v7-Pa-ad5" firstAttribute="leading" secondItem="fA1-VT-FjM" secondAttribute="leading" id="fDX-my-1a2"/>
                             <constraint firstItem="2v7-Pa-ad5" firstAttribute="top" secondItem="fA1-VT-FjM" secondAttribute="top" id="fU1-p3-D8B"/>
                             <constraint firstItem="P9M-yf-hFU" firstAttribute="top" secondItem="ufj-T6-gKa" secondAttribute="bottom" constant="36" id="g9B-hI-JSi"/>
+                            <constraint firstAttribute="trailing" secondItem="8Q8-tv-c8l" secondAttribute="trailing" id="hNZ-Or-Ese"/>
                             <constraint firstItem="quR-oS-1JV" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="idL-o9-kRT"/>
                             <constraint firstItem="quR-oS-1JV" firstAttribute="top" secondItem="g61-dE-Mbt" secondAttribute="bottom" constant="17" id="jba-En-kJn"/>
-                            <constraint firstItem="req-Oo-FbF" firstAttribute="top" secondItem="f5M-jq-rE0" secondAttribute="bottom" constant="20" id="qWT-EI-blg"/>
+                            <constraint firstItem="8Q8-tv-c8l" firstAttribute="leading" secondItem="fA1-VT-FjM" secondAttribute="leading" id="leA-ag-b0b"/>
                             <constraint firstItem="ufj-T6-gKa" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="txI-Vl-dkE"/>
                             <constraint firstItem="g61-dE-Mbt" firstAttribute="centerX" secondItem="fA1-VT-FjM" secondAttribute="centerX" id="usY-nd-C7Z"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addAnnouncementButton" destination="g61-dE-Mbt" id="Qsn-yb-v0l"/>
                         <outlet property="addNewAnnouncementButton" destination="g61-dE-Mbt" id="1Gm-fK-x6g"/>
                         <outlet property="backBtn" destination="req-Oo-FbF" id="hff-5F-aQb"/>
                         <outlet property="messageLabel" destination="cKH-cS-Ikp" id="frx-Hi-748"/>
                         <outlet property="myAnnouncements" destination="quR-oS-1JV" id="ljx-nr-G64"/>
+                        <outlet property="navView" destination="8Q8-tv-c8l" id="PVk-Eo-9bX"/>
                         <outlet property="successImageView" destination="ufj-T6-gKa" id="oxA-Gh-Bm7"/>
                         <outlet property="titleLabel" destination="P9M-yf-hFU" id="Wh9-Cv-z4d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xn-qm-lLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3338" y="2433"/>
+            <point key="canvasLocation" x="3396" y="2433"/>
         </scene>
     </scenes>
     <resources>

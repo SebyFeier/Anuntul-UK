@@ -27,8 +27,9 @@
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
     [_backBtn setHidden:YES];
-    
+    [_navView setHidden:YES];
     if (_isEmpty) {
+        [_navView setHidden:NO];
         [_backBtn setHidden:NO];
         [_successImageView setHidden:YES];
         self.titleLabel.text = @"Nici un rezultat";
@@ -39,6 +40,7 @@
     }
     
     if (_isError) {
+        [_navView setHidden:NO];
         [_backBtn setHidden:NO];
         [_successImageView setHidden:YES];
         self.titleLabel.text = @"Eroare";
