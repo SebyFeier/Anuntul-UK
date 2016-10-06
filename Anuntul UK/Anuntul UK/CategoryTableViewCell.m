@@ -24,12 +24,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *optionsWidthConstraint;
 @property (nonatomic, strong) NSIndexPath *indexpath;
 @property (weak, nonatomic) IBOutlet UIButton *optionsButton;
+@property (strong, nonatomic) IBOutlet UIImageView *featuredImageView;
 @end
 
 
 @implementation CategoryTableViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [[self.optionsButton imageView] setContentMode: UIViewContentModeScaleAspectFit];
     [self.optionsButton setImage:[UIImage imageNamed:@"dots"] forState:UIControlStateNormal];
     // Initialization code
@@ -96,16 +98,17 @@
         [self.optionsImageView addGestureRecognizer:tapGesture];
         
     }
-    [_featuredImageView setHidden:YES];
     if (!_isHome) {
         if ([[cellInfo objectForKey:@"on_top"] boolValue] ||
             [[cellInfo objectForKey:@"top_locatii"] boolValue]) {
             //SHOW FEATURED
             [_featuredImageView setHidden:NO];
+        } else {
+            [_featuredImageView setHidden:YES];
         }
+    } else {
+        [_featuredImageView setHidden:YES];
     }
-    
-    [self layoutIfNeeded];
 }
 
 //- (void)optionsButtonTapped:(UITapGestureRecognizer *)tapGesture {
