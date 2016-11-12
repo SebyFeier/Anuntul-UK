@@ -148,7 +148,7 @@
     UIImage *img          = [[info objectForKey:UIImagePickerControllerOriginalImage] fixOrientation];
 //    img                   = [info valueForKey:UIImagePickerControllerEditedImage];
 //    self.imageView.image  = img;
-    NSData *imageData     = UIImageJPEGRepresentation(img, 0.9);
+    NSData *imageData     = UIImageJPEGRepresentation(img, 0.1);
 //    NSString *fileName = [self writeImageInfoToDisk:info];
     NSString *finalImagePath = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     
