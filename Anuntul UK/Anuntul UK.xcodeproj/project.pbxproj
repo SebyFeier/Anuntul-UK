@@ -482,6 +482,7 @@
 				TargetAttributes = {
 					F103F0801CCFE58A007F4B8A = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 39XP9B4NG9;
 					};
 					F103F0991CCFE58B007F4B8A = {
 						CreatedOnToolsVersion = 7.3;
@@ -795,14 +796,16 @@
 			baseConfigurationReference = AA8239B57459523EA289E6D5 /* Pods-Anuntul UK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Marius Chitu (39XP9B4NG9)";
+				DEVELOPMENT_TEAM = 39XP9B4NG9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntuldeuk;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntul.uk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31ec22aa-66fd-4618-8c33-3b057364f651";
+				PROVISIONING_PROFILE = "3d802bdf-7562-4b60-9c55-02094a6f3663";
+				PROVISIONING_PROFILE_SPECIFIER = "Anuntul UK Distribution";
 			};
 			name = Debug;
 		};
@@ -811,14 +814,16 @@
 			baseConfigurationReference = 3035ECC5C06569A0356961A6 /* Pods-Anuntul UK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Marius Chitu (39XP9B4NG9)";
+				DEVELOPMENT_TEAM = 39XP9B4NG9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Anuntul UK/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntuldeuk;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.anuntul.uk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31ec22aa-66fd-4618-8c33-3b057364f651";
+				PROVISIONING_PROFILE = "3d802bdf-7562-4b60-9c55-02094a6f3663";
+				PROVISIONING_PROFILE_SPECIFIER = "Anuntul UK Distribution";
 			};
 			name = Release;
 		};

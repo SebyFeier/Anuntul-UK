@@ -872,10 +872,16 @@ requestsDismissalOfViewController:(UIViewController *)viewController {
     NSDictionary *image = [self.adDetails[@"images"] objectAtIndex:indexPath.row];
     [cell loadImageWithInfo:image isFullScreen:NO];
     [cell layoutSubviews];
-    self.pageControl.currentPage = indexPath.row;
+//    self.pageControl.currentPage = indexPath.row;
     
     return cell;
     
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = self.collectionView.frame.size.width;
+    self.pageControl.currentPage = self.collectionView.contentOffset.x / pageWidth;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
