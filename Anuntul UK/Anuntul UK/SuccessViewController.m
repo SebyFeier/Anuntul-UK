@@ -33,8 +33,9 @@
         [_navView setHidden:NO];
         [_backBtn setHidden:NO];
         [_successImageView setHidden:YES];
-        self.titleLabel.text = @"Nici un rezultat";
+        self.titleLabel.text = @"Niciun rezultat";
         self.messageLabel.text = @"Cautati din nou!";
+        self.titleLabel.font = self.messageLabel.font;
         [self.myAnnouncements setHidden:YES];
         [self.addAnnouncementButton setHidden:YES];
         return;
