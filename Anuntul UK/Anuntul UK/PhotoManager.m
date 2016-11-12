@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "UIImage+Resize.h"
 #import "WebServiceManager.h"
+#import "UIImage+fixOrientation.h"
 
 #define kDocumentsImagesPath @"Images"
 
@@ -144,7 +145,7 @@
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     if (![info objectForKey:UIImagePickerControllerOriginalImage]) {
     }
-    UIImage *img          = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *img          = [[info objectForKey:UIImagePickerControllerOriginalImage] fixOrientation];
 //    img                   = [info valueForKey:UIImagePickerControllerEditedImage];
 //    self.imageView.image  = img;
     NSData *imageData     = UIImageJPEGRepresentation(img, 0.9);

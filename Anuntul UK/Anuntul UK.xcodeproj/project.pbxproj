@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4348C0781DD714BA0058EDB8 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4348C0771DD714BA0058EDB8 /* UIImage+fixOrientation.m */; };
 		D6F928AE5A3F2C27FEEFC309 /* libPods-Anuntul UK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02D798795E342E7FB20035 /* libPods-Anuntul UK.a */; };
 		F103F0861CCFE58B007F4B8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F103F0851CCFE58B007F4B8A /* main.m */; };
 		F103F0891CCFE58B007F4B8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F103F0881CCFE58B007F4B8A /* AppDelegate.m */; };
@@ -89,6 +90,8 @@
 /* Begin PBXFileReference section */
 		3035ECC5C06569A0356961A6 /* Pods-Anuntul UK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anuntul UK.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anuntul UK/Pods-Anuntul UK.release.xcconfig"; sourceTree = "<group>"; };
 		3A02D798795E342E7FB20035 /* libPods-Anuntul UK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Anuntul UK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4348C0761DD714BA0058EDB8 /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
+		4348C0771DD714BA0058EDB8 /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		AA8239B57459523EA289E6D5 /* Pods-Anuntul UK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anuntul UK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anuntul UK/Pods-Anuntul UK.debug.xcconfig"; sourceTree = "<group>"; };
 		F103F0811CCFE58A007F4B8A /* Anuntul UK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anuntul UK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F103F0851CCFE58B007F4B8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -376,6 +379,8 @@
 				F1A867541CCFE7570049B9AC /* WebViewViewController.h */,
 				F1A867551CCFE7570049B9AC /* WebViewViewController.m */,
 				F103F0841CCFE58B007F4B8A /* Supporting Files */,
+				4348C0761DD714BA0058EDB8 /* UIImage+fixOrientation.h */,
+				4348C0771DD714BA0058EDB8 /* UIImage+fixOrientation.m */,
 			);
 			path = "Anuntul UK";
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 				F1A867651CCFE7570049B9AC /* HexColors.m in Sources */,
 				F1A867561CCFE7570049B9AC /* AdsDetailsViewController.m in Sources */,
 				F103F0861CCFE58B007F4B8A /* main.m in Sources */,
+				4348C0781DD714BA0058EDB8 /* UIImage+fixOrientation.m in Sources */,
 				F1A867601CCFE7570049B9AC /* CreateAnnouncementViewController.m in Sources */,
 				F1A8676E1CCFE7570049B9AC /* MyAdsViewController.m in Sources */,
 				F1A867681CCFE7570049B9AC /* LocationAdsViewController.m in Sources */,

@@ -29,6 +29,7 @@
     [_backBtn setHidden:YES];
     [_navView setHidden:YES];
     if (_isEmpty) {
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
         [_navView setHidden:NO];
         [_backBtn setHidden:NO];
         [_successImageView setHidden:YES];
@@ -40,6 +41,7 @@
     }
     
     if (_isError) {
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
         [_navView setHidden:NO];
         [_backBtn setHidden:NO];
         [_successImageView setHidden:YES];
@@ -77,6 +79,10 @@
 
 }
 - (IBAction)backBtnTapped:(id)sender {
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

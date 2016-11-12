@@ -286,7 +286,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     successController.isError = YES;
-                    [self presentViewController:successController animated:YES completion:NULL];
+                    [self.navigationController pushViewController:successController animated:YES];
                 });
             } else {
                 [[[UIAlertView alloc] initWithTitle:@"Eroare" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -483,9 +483,14 @@
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
         if (!error) {
             if (array && array.count < 1) {
+                
+//                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 50)];
+//                label.center = self.view.center;
+//                [self.view addSubview:label];
                 SuccessViewController *success = [self.storyboard instantiateViewControllerWithIdentifier:@"SuccessViewControllerIdentifier"];
                 success.isEmpty = YES;
-                [self presentViewController:success animated:YES completion:NULL];
+                [self.navigationController pushViewController:success animated:YES];
+//                [self.tabBarController presentViewController:success animated:YES completion:NULL];
                 return;
             }
             _isPremium = NO;
